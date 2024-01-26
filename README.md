@@ -24,7 +24,7 @@ FilesCollect-Py is a robust and user-friendly application designed to streamline
 - Early version...
 ```
 
-=======================( FileCollector )======================
+=======================( FilesCollect )======================
 
 
 
