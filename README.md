@@ -59,7 +59,7 @@ pip install torpy
 
 ### NOTATION
 - A creator, releases his work for free, you try to click through them selectively, but, there are too many and they are each in multiple formats, you, want them all and dont want it in all formats.
-- After you digest multiple downloads, you notice FilesCollect-Py saved most of the url as the folder name, which included the, author and project name, you know where to go to donate. 
+- After you digest multiple downloads, you notice FilesCollect-Py saved most of the url as the folder name, which included the, author and project name, you know, where to go and who, to donate. 
 
 ## DISCLAIMER
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
