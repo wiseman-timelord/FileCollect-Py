@@ -15,7 +15,7 @@ FileCollect-Py is a robust and user-friendly application designed to streamline 
 
 ## NOTATION
 - This program is intended to save the user time, for example a creator, releases his work for free and accepts donations, you try to click through them selectively, but, there are too many creations and they are each in multiple formats, you, so want them all and dont want all formats, and to save time there is FileCollect-Py.
-- After you digest multiple creations, you notice FileCollect-Py saved most of the url as the folder name, which included the, author and project name, you know where to go to donate, and the end user also was able to tell someone of this other thing the creator did, and the creator has more people interested in his work, win-win. 
+- After you digest multiple creations, you notice FileCollect-Py saved most of the url as the folder name, which included the, author and project name, you know where to go to donate, and the end user also was able to tell someone of this other thing the creator did, and now the creator has more people interested in his work. 
 
 ## DISCLAIMER
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
