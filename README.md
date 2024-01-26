@@ -13,6 +13,20 @@ FileCollect-Py is a robust and user-friendly application designed to streamline 
 - **Scraping and Downloading**: Capable of scraping web pages for specified file types and downloading them efficiently, organizing the downloads in directories named after the structure of the provided URL.
 - **Container Extration**: The utility module generates a unique directory structure for downloaded files based on the webpage's URL, ensuring organized storage and easy retrieval of collected files.
 
+### PREVIEW
+Coming up
+
+## USAGE
+Coming up...
+
+### REQUIREMENTS
+Libraries...
+```
+pip install requests
+pip install beautifulsoup4
+pip install torpy
+```
+
 ## NOTATION
 - This program is intended to save the user time, for example a creator, releases his work for free and accepts donations, you try to click through them selectively, but, there are too many creations and they are each in multiple formats, you, so want them all and dont want all formats, and to save time there is FileCollect-Py.
 - After you digest multiple creations, you notice FileCollect-Py saved most of the url as the folder name, which included the, author and project name, you know where to go to donate, and the end user also was able to tell someone of this other thing the creator did, and now the creator has more people interested in his work. 
