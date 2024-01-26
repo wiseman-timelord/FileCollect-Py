@@ -47,7 +47,11 @@ Select :- Menu Options = 1-3, Begin Rip = B, Exit Menu = X:
 ```
 
 ## USAGE
-Coming up...
+1. Run `Setup-Install.Bat`, and then, check the libraries all installs correctly and run again as required.
+2. Run `FilesCollect-Py.Bat`, and then configure using options 1-3.
+3. Press `b` to begin, then watch as the scripts, optionally connect to tor and download the specified files from the specified location.
+4. Examine summary screen, determine if all the files were correctly downloaded.
+5. Check the `.\Downloads` folder for your files, and then move them to your intended location.    
 
 ### REQUIREMENTS
 There will be an installer, but for now...
