@@ -58,8 +58,8 @@ pip install torpy
 ```
 
 ### NOTATION
-- This program is intended to save the user time, for example a creator, releases his work for free and accepts donations, you try to click through them selectively, but, there are too many creations and they are each in multiple formats, you, so want them all and dont want all formats, and to save time there is FilesCollect-Py.
-- After you digest multiple creations, you notice FilesCollect-Py saved most of the url as the folder name, which included the, author and project name, you know where to go to donate, and the end user also was able to tell someone of this other thing the creator did, and now the creator has more people interested in his work. 
+- A creator, releases his work for free, you try to click through them selectively, but, there are too many and they are each in multiple formats, you, so want them all and dont want all formats, to save time there is FilesCollect-Py.
+- After you digest multiple downloads, you notice FilesCollect-Py saved most of the url as the folder name, which included the, author and project name, you know where to go to donate, and the end user also was able to tell someone of this other thing the creator did. 
 
 ## DISCLAIMER
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
