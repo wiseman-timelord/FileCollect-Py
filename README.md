@@ -2,12 +2,12 @@
 
 ### STATUS
 Development. v0.06. ETA possibly 1-2 days depending upon remaining issues and bugfixing. Remaining tasks are...
-- Final summary stats with completed/failed.
-- Tor library "Tor expert bundle" code must be added for linux, to maintain multi-OS, then install instructions..
-- add additional delays in download start in optimal locations to a total of 15 seconds, to ensure processes complete correctly, then additional random timer of up to 30/60/120/240/480 seconds upon user selection from main menu.
+- Final summary stats screen with, completed/failed and pause at end before return to menu. figure out stats we want, make some ascii art, high-score, low=score, average-score, same as bethddsscale.
+- add additional delays in download start in multiple optimal locations to a total of 15 seconds, to "ensure processes complete correctly", then correct additional random timer with options of additional time up to 15/30/60/120/240/480 seconds upon user selection from main menu with default 15 additional seconds to the 15 scattered in optimal locations.
+- Tor library "Tor expert bundle" code must be added for linux, to maintain multi-OS. then complete install instructions in readme.md..
+- move save/load settings to utility, then move download process code to new script ".\scrips\manager.py". 
 - testing and bugfixing, ensure am able to get to menu without crash.
 - format menu 100% correctly. 
-- utils gets bigger than 200 lines, then move download process code to new script ".\scrips\manager.py". 
 - check everything over.
 - run live tests & bugfix.
 - Finish documentation.
