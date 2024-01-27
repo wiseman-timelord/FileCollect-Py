@@ -53,12 +53,24 @@ Select :- Menu Options = 1-3, Begin Rip = B, Exit Menu = X:
 5. Check the `.\Downloads` folder for your files, and then move them to your intended location.    
 
 ### REQUIREMENTS
-There will be an installer, but for now...
+Install is not easy, this will be written further later..
+1. Python stuff...
 ```
 pip install requests
 pip install beautifulsoup4
 pip install torpy
+pip install requests[socks]
 ```
+2. Tor Service
+```
+Download the Tor Expert Bundle: https://www.torproject.org/download/tor/
+Extract the Bundle, Run the Tor Service
+```
+3. Run the program...
+```
+run FilesCollect-Py.Bat
+```
+
 
 ### NOTATION
 - A creator, releases his work for free, you try to click through them selectively, but, there are too many and they are each in multiple formats, you, want them all and dont want it in all formats.
