@@ -1,7 +1,7 @@
 # FilesCollect-Py
 
 ### STATUS
-Development. v0.06. ETA <24 hours. Remaining tasks are...
+Development. v0.06. ETA possibly 1-2 days depending upon remaining issues and bugfixing. Remaining tasks are...
 - Final summary stats with completed/failed.
 - Tor library "Tor expert bundle" code must be added for linux, to maintain multi-OS, then install instructions..
 - add additional delays in download start in optimal locations to a total of 15 seconds, to ensure processes complete correctly, then additional random timer of up to 30/60/120/240/480 seconds upon user selection from main menu.
