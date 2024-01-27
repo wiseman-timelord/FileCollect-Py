@@ -8,6 +8,7 @@ Development. v0.04. Remaining tasks are...
 - Ensure downloads confirmations ie "Downloading: examplefilename.pdf", "Completed: examplefilename".
 - Final summary stats with completed/failed. 
 - format menu 100% correctly. 
+- random delay between starting next download, toggle, None, 15, 30, 120, 240, 480 seconds, from menu. independent timers for async mode.
 - check everything over.
 - run live tests & bugfix.
 - Finish documentation.
