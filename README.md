@@ -15,7 +15,7 @@ Development. v0.04. Remaining tasks are...
 - Finish documentation.
 
 ## DESCRIPTION
-FilesCollect is an advanced web scraping utility designed to streamline the process of collecting files from websites while prioritizing user privacy and convenience. It features an interactive menu that allows users to specify the target URL and file types they wish to download. Leveraging the Tor/Onion network through the Torpy library, FilesCollect offers an enhanced privacy mode for anonymous operations. It ensures a seamless user experience by persistently storing settings in a settings.json file and organizes downloaded files into directories mirroring the URL's structure. With its capability to handle standard and Tor-based web sessions, FilesCollect stands out as a robust and user-friendly tool for efficient web scraping and file management.
+FilesCollect is an advanced web scraping utility designed to streamline the process of collecting files from websites while prioritizing user privacy and convenience. It features an interactive menu that allows users to specify the target URL and file types they wish to download. Leveraging the Tor/Onion network through the Torpy library, FilesCollect offers an enhanced privacy mode for anonymous operations. It ensures a seamless user experience by persistently storing settings in a settings.json file and organizes downloaded files into directories mirroring the URL's structure. With its capability to handle standard and Tor-based web sessions, FilesCollect stands out as a robust and user-friendly tool for efficient web scraping and file management. 
 
 ### FEATURES
 - **Interactive Menu**: Utilizes an interactive system, enabling users to input the target webpage's URL and specify file extensions.
@@ -80,8 +80,9 @@ run FilesCollect-Py.Bat
 
 
 ### NOTATION
-- A creator, releases his work for free, you try to click through them selectively, but, there are too many and they are each in multiple formats, you, want them all and dont want it in all formats.
-- After you digest multiple downloads, you notice FilesCollect-Py saved most of the url as the folder name, which included the, author and project name, you know, where to go and who, to donate. 
+- After exploring numerous works by a creator, you opt to scrape a selection, and you notice FilesCollect-Py conveniently saves the author's and project's names in the folder name, simplifying future donations. Recognizing the value of the creator's efforts, you plan to contribute financially once you, benefit from their work or have the means.
+- This one cannot be done in PowerShell apparemtly, I tried to make it in the first session with powershell and built-in windows 10 functions, but it became impossible. The [torpy](https://pypi.org/project/torpy/) library makes it possible in Python, they get the credit for this project.
+
 
 ## DISCLAIMER
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
