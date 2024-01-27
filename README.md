@@ -2,8 +2,6 @@
 
 ### STATUS
 Development. v0.03. Remaining tasks are...
-- Error "No existing settings found or file is corrupt. Starting with blank settings.
-", solution replace with "None" for blank values from json for "1. Page Location.".
 - develop tor/onion features to completion: 1) is everything present that needs to be. 2) possibly requires login period after pressing b to begin start, with progress display, ie "Connecting To Onion.."? 
 - progress during download of file: 1) list all filtered files, 2) one by one display "Downloading: examplefilename.pdf", "Completed: examplefilename". 3) final summary stats, completed, failed. 
 - format menu 100% correctly. 
