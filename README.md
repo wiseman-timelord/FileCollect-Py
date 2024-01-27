@@ -83,6 +83,7 @@ run FilesCollect-Py.Bat
 ### NOTATION
 - After exploring numerous works by a creator, you opt to scrape a selection, and you notice FilesCollect-Py conveniently saves the author's and project's names in the folder name, simplifying future donations. Recognizing the value of the creator's efforts, you plan to contribute financially once you, benefit from their work or have the means.
 - This one cannot be done in PowerShell apparemtly, I tried to make it in the first session with powershell and built-in windows 10 functions, but it became impossible. The [torpy](https://pypi.org/project/torpy/) library makes it possible in Python, they get the credit for this project.
+- Again for ethical consideration, delays were hardcoded into the program, to ensure that the vanilla version of the program was not used for quick unethical means, FilesCollect-Py is intended to make tasks easier, not shorten the time doing the task. 
 
 
 ## DISCLAIMER
