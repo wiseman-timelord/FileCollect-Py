@@ -2,7 +2,7 @@
 
 ### STATUS
 Development. v0.04. Remaining tasks are...
-- figure out and develop, tor/onion features to completion: 1) requires install of, python libraries and tor service. 2) may require configuration.
+- Performance Optimization, Security and Anonymity Assurance, User Experience Enhancements.
 - will the scripts be ok for multi-os, because the program does a lot of stuff with folders? sureley this requires os lversions of each of the relating lines..? If so, decide, windows or linus+windows.
 - testing and bugfixing, ensure am able to get to menu without crash.
 - ensure TOR confirmations, ie "Checking Tor Service..." "...Tor Service Available." "...Starting Tor Service.", "Connecting To Tor..." "...Auto-Configuring Tor...", "...Tor Connected" "...Disconnected From Tor". 
