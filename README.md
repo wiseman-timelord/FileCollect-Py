@@ -3,7 +3,7 @@
 ### STATUS
 Development. v0.06. ETA <24 hours. Remaining tasks are...
 - Final summary stats with completed/failed.
-- add additional delays in optimal locations, to purposely not make it the preferred tool for content theifs due to its speed, *ahem ensure processes complete correctly. the idea is to make it easier to download files under circumstances where it is difficult, and time is not the issue, more, effort put in and mental patience, tick tock could be programming etc..guessing the random timer will be, minimum of 15 seconds, then additional random 0-30/60/120/240/480 upon user selection. I'm thinking where huge directories of content in multiple formats for each, it would take about a minimum of 15 seconds to have a good think about something from its title/limited description, if I was actually going to use something before downloading, hyperthetically. 
+- add additional delays in download start in optimal locations to a total of 15 seconds, to ensure processes complete correctly, then additional random timer of up to 30/60/120/240/480 seconds upon user selection.
 - testing and bugfixing, ensure am able to get to menu without crash.
 - format menu 100% correctly. 
 - utils gets bigger than 200 lines, then move download process code to new script ".\scrips\manager.py". 
