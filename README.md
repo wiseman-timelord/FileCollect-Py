@@ -28,24 +28,28 @@ FilesCollect is an advanced web scraping utility designed to streamline the proc
 - Early version (needs updating when its bugfixed)...
 ```
 
-=======================( FilesCollect )======================
-
-
-
-
-                      1. Page Location.
-                               ()                               
-
-                       2. File Extension.
-                              (None)
-
-                       3. Toggle Privacy
-                         (Standard Mode)
-
-
-
-
-Select :- Menu Options = 1-3, Begin Rip = B, Exit Menu = X:
+    print("")
+    print("=======================( FilesCollect )=======================")
+    print("\n\n\n")
+    print("                   1. Content Page Location")
+    print(f"{formatted_url}")
+    print("")
+    print("                    2. File Extension Type")
+    print(f"                              ({file_ext_text})")
+    print("")
+    print("                    3. Network Privacy Modes")
+    print(f"                      ({privacy_mode_text})")
+    print("")
+    print("                      4. Multi-Thread Modes")
+    print(f"                      ({asynchronous_mode_4fn_text})")
+    print("") 
+    print("                      5. Random Timer Delay")
+    print(f"                          ({random_delay_r5y})")
+    print("")
+    print("                      6. Set Tor Port Number")
+    print(f"                            ({TOR_PORT})")
+    print("\n\n\n")
+    print("Select :- Menu Options = 1-6, Begin Rip = B, Exit Menu = X: ", end='')
 
 ```
 
