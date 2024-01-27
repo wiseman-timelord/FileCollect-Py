@@ -2,7 +2,6 @@
 
 ### STATUS
 Development. v0.06. Remaining tasks are...
-- Ensure downloads confirmations ie "Downloading: examplefilename.pdf", "Completed: examplefilename".
 - Final summary stats with completed/failed. 
 - testing and bugfixing, ensure am able to get to menu without crash.
 - format menu 100% correctly. 
