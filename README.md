@@ -2,13 +2,12 @@
 
 ### STATUS
 Development. v0.04. Remaining tasks are...
-- User Experience Enhancements.
+- random delay between starting next download, toggle, will delay the next download by random number between, 1s and the additional toggleable amount of Off/15/30/60/120/240/480 seconds, from menu item "6. Random Delay", where Off would turn the random amount of additional time off, the specific amunt of time will be calculated each time, with a maximum number of additional time of whatever was selected. independent timers for each of the downloads in async mode, done optimally.
 - will the scripts be ok for multi-os, because the program does a lot of stuff with folders? sureley this requires os versions of each of the relating path lines..? If so, decide, windows or linus+windows.
-- testing and bugfixing, ensure am able to get to menu without crash.
 - Ensure downloads confirmations ie "Downloading: examplefilename.pdf", "Completed: examplefilename".
 - Final summary stats with completed/failed. 
+- testing and bugfixing, ensure am able to get to menu without crash.
 - format menu 100% correctly. 
-- random delay between starting next download, toggle, will delay the next download by random number between, 1s and the additional toggleable amount of Off/15/30/60/120/240/480 seconds, from menu item "6. Random Delay", where Off would turn the random amount of additional time off, the specific amunt of time will be calculated each time, with a maximum number of additional time of whatever was selected. independent timers for each of the downloads in async mode, done optimally.
 - utils gets bigger than 200 lines, then move download process code to new script ".\scrips\manager.py". 
 - check everything over.
 - run live tests & bugfix.
