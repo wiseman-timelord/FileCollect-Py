@@ -12,14 +12,15 @@ Development. v0.03. Remaining tasks are...
 - Finish documentation.
 
 ## DESCRIPTION
-FilesCollect-Py is a robust and user-friendly application designed to streamline the process of collecting files from the web. Through an intuitive menu-driven interface, users can specify the target webpage and desired file types. The program intelligently manages user settings, persisting them across sessions for convenience. With sophisticated web scraping capabilities, FilesCollect-Py efficiently downloads specified file types, organizing them in a custom directory structure that mirrors the webpage's URL. Enhanced with comprehensive error handling, FilesCollect-Py ensures reliability and ease of use, making it an indispensable tool for automated file collection tasks.
+FilesCollect is an advanced web scraping utility designed to streamline the process of collecting files from websites while prioritizing user privacy and convenience. It features an interactive menu that allows users to specify the target URL and file types they wish to download. Leveraging the Tor/Onion network through the Torpy library, FilesCollect offers an enhanced privacy mode for anonymous operations. It ensures a seamless user experience by persistently storing settings in a settings.json file and organizes downloaded files into directories mirroring the URL's structure. With its capability to handle standard and Tor-based web sessions, FilesCollect stands out as a robust and user-friendly tool for efficient web scraping and file management.
 
 ### FEATURES
-- **Interactive Menu**: Employs an interactive menu system, allowing users to enter the URL of the page they want to scrape and specify file extensions of interest.
-- **Enhanced Privacy**: Through use of Torpy library, the Tor/Onion network is optional, enabling, anonymous & free, VPN based downloads. 
-- **Persistent Settings**: The program uses a `settings.json` file to persistently store and retrieve user preferences like the base URL and desired file types, providing a seamless user experience across sessions.
-- **Scraping and Downloading**: Capable of scraping web pages for specified file types and downloading them efficiently, organizing the downloads in directories named after the structure of the provided URL.
-- **Container Extration**: The utility module generates a unique directory structure for downloaded files based on the webpage's URL, ensuring organized storage and easy retrieval of collected files.
+- **Interactive Menu**: Streamlined navigation through a user-friendly interface, enabling URL input and file type specification.
+- **Enhanced Privacy**: Utilizes the Tor/Onion network via the Torpy library, offering **anonymous & free**, VPN-based downloads.
+- **Persistent Settings**: Seamlessly retains user preferences, including the base URL and file types, across sessions using a `settings.json` file.
+- **Scraping and Downloading**: Efficiently extracts and retrieves specified file types from web pages, maintaining a well-organized download structure.
+- **Container Extraction**: Employs a unique directory system based on the webpage's URL, ensuring structured storage and easy access to **collected files**.
+- **Adaptive Error Handling**: Intelligently manages runtime errors and network issues, ensuring uninterrupted operation and robust performance.
 
 ### PREVIEW
 - Early version...
