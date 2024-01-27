@@ -63,6 +63,7 @@ pip install requests
 pip install beautifulsoup4
 pip install torpy
 pip install requests[socks]
+pip install psutil
 ```
 2. Tor Service
 ```
