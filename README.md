@@ -3,7 +3,7 @@
 ### STATUS
 Development. v0.06. ETA <24 hours. Remaining tasks are...
 - Final summary stats with completed/failed.
-- add additional delays in download start in optimal locations to a total of 15 seconds, to ensure processes complete correctly, then additional random timer of up to 30/60/120/240/480 seconds upon user selection.
+- add additional delays in download start in optimal locations to a total of 15 seconds, to ensure processes complete correctly, then additional random timer of up to 30/60/120/240/480 seconds upon user selection from main menu.
 - testing and bugfixing, ensure am able to get to menu without crash.
 - format menu 100% correctly. 
 - utils gets bigger than 200 lines, then move download process code to new script ".\scrips\manager.py". 
