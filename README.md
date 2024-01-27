@@ -1,7 +1,7 @@
 # FilesCollect-Py
 
 ### STATUS
-Development. v0.06. Remaining tasks are...
+Development. v0.06. ETA <24 hours. Remaining tasks are...
 - Final summary stats with completed/failed. 
 - testing and bugfixing, ensure am able to get to menu without crash.
 - format menu 100% correctly. 
