@@ -49,7 +49,7 @@ FilesCollect is an advanced web scraping utility designed to streamline the proc
     print("                      6. Set Tor Port Number")
     print(f"                            ({TOR_PORT})")
     print("\n\n\n")
-    print("Select :- Menu Options = 1-6, Begin Rip = B, Exit Menu = X: ", end='')
+    print("Select :- Menu Options = 1-6, Begin Scrape = B, Exit Menu = X: ", end='')
 
 ```
 
