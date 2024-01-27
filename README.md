@@ -2,7 +2,8 @@
 
 ### STATUS
 Development. v0.06. ETA <24 hours. Remaining tasks are...
-- Final summary stats with completed/failed. 
+- Final summary stats with completed/failed.
+- add additional delays in optimal locations, to purposely not make it the preferred tool for content theifs due to its speed.. 
 - testing and bugfixing, ensure am able to get to menu without crash.
 - format menu 100% correctly. 
 - utils gets bigger than 200 lines, then move download process code to new script ".\scrips\manager.py". 
