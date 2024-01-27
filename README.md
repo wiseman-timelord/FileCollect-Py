@@ -18,12 +18,12 @@ Development. v0.04. Remaining tasks are...
 FilesCollect is an advanced web scraping utility designed to streamline the process of collecting files from websites while prioritizing user privacy and convenience. It features an interactive menu that allows users to specify the target URL and file types they wish to download. Leveraging the Tor/Onion network through the Torpy library, FilesCollect offers an enhanced privacy mode for anonymous operations. It ensures a seamless user experience by persistently storing settings in a settings.json file and organizes downloaded files into directories mirroring the URL's structure. With its capability to handle standard and Tor-based web sessions, FilesCollect stands out as a robust and user-friendly tool for efficient web scraping and file management.
 
 ### FEATURES
-- **Interactive Menu**: Streamlined navigation through a user-friendly interface, enabling URL input and file type specification.
-- **Enhanced Privacy**: Utilizes the Tor/Onion network via the Torpy library, offering **anonymous & free**, VPN-based downloads.
-- **Persistent Settings**: Seamlessly retains user preferences, including the base URL and file types, across sessions using a `settings.json` file.
-- **Scraping and Downloading**: Efficiently extracts and retrieves specified file types from web pages, maintaining a well-organized download structure.
-- **Container Extraction**: Employs a unique directory system based on the webpage's URL, ensuring structured storage and easy access to **collected files**.
-- **Adaptive Error Handling**: Intelligently manages runtime errors and network issues, ensuring uninterrupted operation and robust performance.
+- **Interactive Menu**: Utilizes an interactive system, enabling users to input the target webpage's URL and specify file extensions.
+- **Enhanced Privacy**: Utilizes the Torpy library, offering an optional Tor/Onion network for anonymous, VPN-like downloads.
+- **Persistent Settings**: Utilizes a settings.json file for persistent storage and retrieval of user preferences such as base URL and file types.
+- **Scraping and Downloading**: Efficiently scrapes web pages for specified file types and downloads files, organizing them in URL-structured directories.
+- **Container Extraction**: Generates a unique directory structure for downloaded files based on the webpage's URL, ensuring orderly storage and retrieval.
+- **Progress Indication**: Provides real-time progress bars for downloads, active and inactive, full-feature bars, for relevantly, single and threaded, downloads.
 
 ### PREVIEW
 - Early version (needs updating when its bugfixed)...
