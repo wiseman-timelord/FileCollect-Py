@@ -2,8 +2,11 @@
 
 ### STATUS
 Development. v0.04. Remaining tasks are...
-- develop tor/onion features to completion: 1) is everything present that needs to be. 2) possibly requires login period after pressing b to begin start, with progress display, ie "Connecting To Onion.."? 
-- progress during download of file: 1) list all filtered files, 2) one by one display "Downloading: examplefilename.pdf", "Completed: examplefilename". 3) final summary stats, completed, failed. 
+- figure out and develop, tor/onion features to completion: 1) requires install of, python libraries and tor service. 2) may require configuration.
+- testing and bugfixing, ensure am able to get to menu without crash.
+- ensure TOR confirmations, ie "Checking Tor Service..." "...Tor Service Available." "...Starting Tor Service.", "Connecting To Tor..." "...Auto-Configuring Tor...", "...Tor Connected" "...Disconnected From Tor". 
+- Ensure downloads confirmations ie "Downloading: examplefilename.pdf", "Completed: examplefilename".
+- Final summary stats with completed/failed. 
 - format menu 100% correctly. 
 - check everything over.
 - run live tests & bugfix.
