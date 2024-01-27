@@ -65,6 +65,7 @@ pip install beautifulsoup4
 pip install torpy
 pip install requests[socks]
 pip install psutil
+pip install asyncio
 ```
 2. Tor Service
 ```
