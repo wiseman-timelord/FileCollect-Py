@@ -21,7 +21,7 @@ FilesCollect is an advanced web scraping utility designed to streamline the proc
 - **Adaptive Error Handling**: Intelligently manages runtime errors and network issues, ensuring uninterrupted operation and robust performance.
 
 ### PREVIEW
-- Early version...
+- Early version (needs updating when its bugfixed)...
 ```
 
 =======================( FilesCollect )======================
