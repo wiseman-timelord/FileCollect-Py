@@ -4,7 +4,7 @@
 import os, time
 
 # Tor Errors
-error_message_map_sls = {
+error_msgs = {
     FileNotFoundError: "File Not Found",
     json.JSONDecodeError: "Invalid JSON",
     requests.exceptions.HTTPError: "HTTP Error",
@@ -14,15 +14,14 @@ error_message_map_sls = {
     aiohttp.ServerDisconnectedError: "Server Disconnected",
     Exception: "Unexpected Error",
     "tor_not_running": "Tor Unavailable",
-    "tor_checking": "Tor Checking",
-    "tor_starting": "Tor Starting",
-    "tor_retry": "Tor Retry",
     "tor_failed": "Tor Failed",
     "ip_checking": "Checking IP",
     "ip_hidden": "IP Hidden",
     "tor_active": "Tor Active",
-    "secure_mode": "Secure Mode",
 }
+
+def handle_error(e):
+    return error_msgs.get(type(e), "Error Occurred")
 
 # Functions Begin
 def update_progress(filename, downloaded, total, start_time):
