@@ -2,4 +2,6 @@
     "base_url_location_eia": "",
     "file_type_search_fvb": []
 	"standard_mode_3nc": true
+	"asynchronous_mode_4fn": false
+    "TOR_PORT": ""	
 }
