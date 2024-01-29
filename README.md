@@ -2,7 +2,7 @@
 
 ### STATUS
 Not Working/Development. v0.07. ETA possibly 1-2 days depending upon remaining issues and bugfixing. Remaining tasks are...
-- Delayed due to, ["The Sword Of Darkone Sunkiller"](https://gyazo.com/9e6015136e672ec070f491950a4f356e) and [Mp3ToSlWav-Py](https://github.com/wiseman-timelord/Mp3ToSlWav-Py) projects. 
+- Delayed due to, ["The Sword Of Darkone Sunkiller"](https://gyazo.com/f29f70f872d63fad1be3a89b2c1e6ce5) and [Mp3ToSlWav-Py](https://github.com/wiseman-timelord/Mp3ToSlWav-Py) projects. 
 - Final summary stats screen with, completed/failed and pause at end before return to menu. figure out stats we want, make some ascii art, high-score, low=score, average-score, same as bethddsscale.
 - add additional delays in download start in multiple optimal locations to a total of 15 seconds, to "ensure processes complete correctly", then correct additional random timer with options of additional time up to 15/30/60/120/240/480 seconds upon user selection from main menu with default 15 additional seconds to the 15 scattered in optimal location, with a minimum of 1 additional second, random should be in 1 second intervals, thus the least time between downloads on the lowest settings will be, 1 every 16-30 seconds, or every 8-15 seconds in async.
 - Tor library "Tor expert bundle" code must be added for linux, to maintain multi-OS. then complete install instructions in readme.md for linux users.
