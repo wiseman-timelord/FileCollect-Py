@@ -2,7 +2,7 @@
 
 ### STATUS
 Not Working/Development. v0.08. ETA possibly 1 days depending upon remaining issues and bugfixing. Remaining tasks are...
-- testing and bugfixing, ensure am able to get to menu without crash.
+- testing and bugfixing, ensure main menu works.
 - format menu 100% correctly. 
 - check everything over.
 - Tor library "Tor expert bundle" code must be added for linux, to maintain multi-OS. then complete install instructions in readme.md for linux users.
