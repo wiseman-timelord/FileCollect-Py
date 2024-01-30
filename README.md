@@ -1,7 +1,7 @@
 # FilesCollect-Py
 
 ### STATUS
-Not Working/Development. v0.07. ETA possibly 1 days depending upon remaining issues and bugfixing. Remaining tasks are...
+Not Working/Development. v0.08. ETA possibly 1 days depending upon remaining issues and bugfixing. Remaining tasks are...
 - testing and bugfixing, ensure am able to get to menu without crash.
 - format menu 100% correctly. 
 - check everything over.
