@@ -5,6 +5,7 @@ import os, json, time, asyncio
 from scripts import display, utility, manage
 from scripts.display import clear_screen
 from scripts.utility import load_settings, save_settings
+from scripts.manage import scrape_and_download
 
 
 # Global Variables
@@ -58,7 +59,7 @@ def main():
     set_working_directory()
     load_settings(config)
     clear_screen()
-    display.handle_menu(config, save_settings, utility.scrape_and_download)
+    display.handle_menu(config, save_settings, scrape_and_download)
     current_score_9fr = (total_files_downloaded_vr5 / total_time_elapsed_4vd) * 100 if total_time_elapsed_4vd > 0 else 0
     display.display_final_summary(low_score_3hf, high_score_6hd, total_files_downloaded_vr5, total_time_elapsed_4vd, current_score_9fr)
     

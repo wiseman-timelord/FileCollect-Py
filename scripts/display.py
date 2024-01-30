@@ -68,17 +68,16 @@ def display_inactive_progress_bar(filename, total):
     bar = '?' * 20
     size_info = '???/{}'.format(format_file_size(total))
     time_info = '??/??'
-    
     sys.stdout.write(f'\r{truncated_filename} [{bar}] {size_info} {time_info}')
     sys.stdout.flush()
 
 def display_menu(config):
-    mode_text = "Standard Mode" if standard_mode_3nc else "Tor/Onion Mode"
-    file_ext_text = ", ".join(file_type_search_fvb) if file_type_search_fvb else "None"
+    mode_text = "Standard Mode" if config.standard_mode else "Tor/Onion Mode"
+    file_ext_text = ", ".join(config.file_type_search) if config.file_type_search else "None"
     privacy_mode_text = mode_text
-    asynchronous_mode_4fn_text = "Enabled" if asynchronous_mode_4fn else "Disabled"
-    display_url = base_url_location_eia[-62:] if len(base_url_location_eia) > 62 else base_url_location_eia
-    url_display_text = f"({display_url if display_url else 'None'})"  # This line is modified
+    asynchronous_mode_text = "Enabled" if config.asynchronous_mode else "Disabled"
+    display_url = config.base_url_location[-62:] if len(config.base_url_location) > 62 else config.base_url_location
+    url_display_text = f"({display_url if display_url else 'None'})"
     total_length = 64
     left_padding = (total_length - len(url_display_text)) // 2
     right_padding = total_length - left_padding - len(url_display_text)
@@ -109,7 +108,7 @@ def display_menu(config):
 
 def handle_menu(config, save_settings_func, scrape_and_download_func):
     while True:
-        display_menu(base_url_location_eia, file_type_search_fvb, standard_mode_3nc, asynchronous_mode_4fn, random_delay_r5y, TOR_PORT) 
+        display_menu(config) 
         choice = input().strip().upper()
         if choice == '1':
             base_url_location_eia = get_page_location()
@@ -179,31 +178,21 @@ def update_random_delay():
     print(f"Random delay set to {random_delay_r5y} seconds (minimum 15 seconds).")
 
 def display_final_summary(low_score_3hf, high_score_6hd, total_files_downloaded_vr5, total_time_elapsed_4vd, current_score_9fr):
-    
-    # Calculation of current score
-    if total_time_elapsed_4vd > 0:  # Prevent division by zero
+    if total_time_elapsed_4vd > 0:
         current_score_9fr = (total_files_downloaded_vr5 / total_time_elapsed_4vd) * 100
-    
-    # Check and update high and low scores
     first_time = False
     if low_score_3hf == 0 and high_score_6hd == 0:
         low_score_3hf, high_score_6hd = current_score_9fr, current_score_9fr
         first_time = True
-    
     new_high_score = False
     if current_score_9fr > high_score_6hd:
         high_score_6hd = current_score_9fr
         new_high_score = True
-    
     new_low_score = False
     if current_score_9fr < low_score_3hf:
         low_score_3hf = current_score_9fr
         new_low_score = True
-    
-    # Saving the new high and low scores
     save_settings()
-    
-    # Displaying the Final Summary
     print("\n==================== Final Summary Stats ====================")
     if first_time:
         print(f"First Score: {current_score:.2f}")
@@ -214,9 +203,7 @@ def display_final_summary(low_score_3hf, high_score_6hd, total_files_downloaded_
             print(f"New Low Score: {current_score:.2f}")
         else:
             print(f"Average Score: {current_score:.2f}")
-    
     print(f"Total Files Downloaded: {total_files_downloaded_vr5}")
     print(f"Total Time Elapsed: {total_time_elapsed_4vd} seconds")
     print("=============================================================")
-    
     input("Press any key to return to the menu...")
