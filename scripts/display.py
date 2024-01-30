@@ -1,7 +1,7 @@
 # display.py
 
 # Imports
-import os, time
+import os, time, json, sys, requests, aiohttp, psutil
 
 
 def clear_screen():
@@ -179,7 +179,6 @@ def update_random_delay():
     print(f"Random delay set to {random_delay_r5y} seconds (minimum 15 seconds).")
 
 def display_final_summary(low_score_3hf, high_score_6hd, total_files_downloaded_vr5, total_time_elapsed_4vd, current_score_9fr):
-    global low_score_3hf, high_score_6hd, total_files_downloaded_vr5, total_time_elapsed_4vd, current_score_9fr
     
     # Calculation of current score
     if total_time_elapsed_4vd > 0:  # Prevent division by zero

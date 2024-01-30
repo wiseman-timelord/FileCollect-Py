@@ -18,7 +18,7 @@ async def download_file(session, url, config, semaphore, progress_callback, asyn
         print(f"Requests Error: {str(e)}")
         time.sleep(2)
 
-def handle_response(response, path, progress_callback, local_filename, start_time=None):
+async def handle_response(response, path, progress_callback, local_filename, start_time=None):
     response.raise_for_status()
     total_size = int(response.headers.get('content-length', 0))
     downloaded = 0
@@ -31,7 +31,7 @@ def handle_response(response, path, progress_callback, local_filename, start_tim
         if downloaded > 0:
             f.seek(downloaded)
         while True:
-            chunk = await response.content.read(8192) if start_time else response.content.read(8192)
+            chunk = await response.content.read(8192) if start_time else await response.content.read(8192)
             if not chunk:
                 break
             f.write(chunk)
@@ -90,8 +90,8 @@ async def handle_async_downloads(session, base_url_location_eia, file_types, ful
                     urljoin(base_url_location_eia, href['href']),
                     full_path,
                     download_semaphore,
-                    update_progress_with_lock,  # Updated callback function
-                    await get_random_delay(random_delay_r5y)  # Apply random delay before starting each download
+                    update_progress_with_lock,
+                    await get_random_delay(random_delay_r5y)
                 )
             ) for href in soup.find_all('a', href=True) if should_download(href['href'], file_types)
         ]
@@ -104,7 +104,7 @@ async def update_progress_with_lock(filename, downloaded, total, start_time):
         update_progress(filename, downloaded, total, start_time)
 
 def handle_sync_downloads(session, base_url_location_eia, file_types, full_path, progress_callback, random_delay_r5y):
-    try {
+    try:
         response = session.get(base_url_location_eia)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')

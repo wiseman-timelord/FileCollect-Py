@@ -1,12 +1,13 @@
 # utility.py
 
 # Imports
-import os, asyncio, aiohttp, requests, psutil, subprocess, time, random
+import os, asyncio, aiohttp, requests, psutil, subprocess, time, random, json
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 from torpy.http.adapter import TorHttpAdapter
 from torpy import TorClient
-from scripts.display import display_progress_bar, error_message_map_sls
+from scripts.display import display_progress_bar, error_msgs
+
 
 
 def handle_error(e):

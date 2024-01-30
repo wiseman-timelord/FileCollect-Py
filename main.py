@@ -4,6 +4,8 @@
 import os, json, time, asyncio
 from scripts import display, utility, manage
 from scripts.display import clear_screen
+from scripts.utility import load_settings, save_settings
+
 
 # Global Variables
 working_directory_vem = ''
