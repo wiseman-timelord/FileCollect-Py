@@ -3,6 +3,13 @@
 # Imports
 import os, time
 
+
+def clear_screen():
+    if os.name == 'nt':
+        _ = os.system('cls')
+    else:
+        _ = os.system('clear')
+
 # Tor Errors
 error_msgs = {
     FileNotFoundError: "File Not Found",
@@ -19,9 +26,6 @@ error_msgs = {
     "ip_hidden": "IP Hidden",
     "tor_active": "Tor Active",
 }
-
-def handle_error(e):
-    return error_msgs.get(type(e), "Error Occurred")
 
 # Functions Begin
 def update_progress(filename, downloaded, total, start_time):
@@ -43,16 +47,21 @@ def format_time(seconds):
     minutes, seconds = divmod(remainder, 60)
     return '{:02}:{:02}:{:02}'.format(min(hours, 99), minutes, seconds)
 
-def display_progress_bar(filename, current, total, elapsed_time, estimated_total_time):
-    truncated_filename = (filename[:12] + '...') if len(filename) > 15 else filename
-    bar_length = 20
-    progress = current / total if total > 0 else 0
-    filled_length = int(round(bar_length * progress))
-    bar = '█' * filled_length + '-' * (bar_length - filled_length)
-    size_info = format_file_size(current) + '/' + format_file_size(total)
-    time_info = format_time(elapsed_time) + '/' + format_time(estimated_total_time)
-    sys.stdout.write(f'\r{truncated_filename} [{bar}] {size_info} {time_info}')
-    sys.stdout.flush()
+def display_progress_bar(filename, current, total, elapsed_time, estimated_total_time, update_interval=1):
+    global last_update_time
+    if not 'last_update_time' in globals():
+        last_update_time = 0
+    if time.time() - last_update_time > update_interval:
+        truncated_filename = (filename[:12] + '...') if len(filename) > 15 else filename
+        bar_length = 20
+        progress = current / total if total > 0 else 0
+        filled_length = int(round(bar_length * progress))
+        bar = '█' * filled_length + '-' * (bar_length - filled_length)
+        size_info = format_file_size(current) + '/' + format_file_size(total)
+        time_info = format_time(elapsed_time) + '/' + format_time(estimated_total_time)
+        sys.stdout.write(f'\r{truncated_filename} [{bar}] {size_info} {time_info}')
+        sys.stdout.flush()
+        last_update_time = time.time()
 
 def display_inactive_progress_bar(filename, total):
     truncated_filename = (filename[:12] + '...') if len(filename) > 15 else filename
@@ -63,7 +72,7 @@ def display_inactive_progress_bar(filename, total):
     sys.stdout.write(f'\r{truncated_filename} [{bar}] {size_info} {time_info}')
     sys.stdout.flush()
 
-def display_menu(base_url_location_eia, file_type_search_fvb, standard_mode_3nc, asynchronous_mode_4fn):
+def display_menu(config):
     mode_text = "Standard Mode" if standard_mode_3nc else "Tor/Onion Mode"
     file_ext_text = ", ".join(file_type_search_fvb) if file_type_search_fvb else "None"
     privacy_mode_text = mode_text
@@ -98,7 +107,7 @@ def display_menu(base_url_location_eia, file_type_search_fvb, standard_mode_3nc,
     print("\n\n\n")
     print("Select :- Menu Options = 1-6, Begin Scrape = B, Exit Menu = X: ", end='')
 
-def handle_menu(base_url_location_eia, file_type_search_fvb, standard_mode_3nc, asynchronous_mode_4fn, random_delay_r5y, TOR_PORT, save_settings_func, begin_rip_message_func, scrape_and_download_func, exit_message_func):
+def handle_menu(config, save_settings_func, scrape_and_download_func):
     while True:
         display_menu(base_url_location_eia, file_type_search_fvb, standard_mode_3nc, asynchronous_mode_4fn, random_delay_r5y, TOR_PORT) 
         choice = input().strip().upper()
@@ -113,28 +122,35 @@ def handle_menu(base_url_location_eia, file_type_search_fvb, standard_mode_3nc, 
         elif choice == '4':
             asynchronous_mode_4fn = not asynchronous_mode_4fn
         elif choice == '5':
-            print("Set Random Delay (Options: Off/15/30/60/120/240/480): ", end='')
-            new_delay = input().strip()
-            if new_delay in ['Off', '15', '30', '60', '120', '240', '480']:
-                random_delay_r5y = new_delay
-                print(f"Random delay set to {random_delay_r5y}")
-            else:
-                print("Invalid option, please choose from Off/15/30/60/120/240/480.")    
+            update_random_delay()
         elif choice == '6':
             print("Enter Port Number: ", end='')
             new_port = input()
-            if new_port.isdigit():
+            time.sleep(1)
+            if new_port.isdigit() and 1024 <= int(new_port) <= 65535:
                 TOR_PORT = int(new_port)
                 print(f"Tor port number set to {TOR_PORT}")
             else:
-                print("Invalid Port, Enter Port.")
+                print("Invalid Port. Please enter a number between 1024 and 65535.")
+                time.sleep(2)
         elif choice == 'B':
+            clear_screen()
+            print("\nBeginning Processes..")
+            time.sleep(2)
             save_settings_func()
+            print("..Saving Settings..")
+            time.sleep(1)
+            print("..Begin Scrape..")
+            time.sleep(2)
             begin_rip_message_func(base_url_location_eia)
+            time.sleep(1)
             scrape_and_download_func(base_url_location_eia, file_type_search_fvb, not standard_mode_3nc, asynchronous_mode_4fn, TOR_PORT)
+            print("..Scrape Finished.")
+            time.sleep(2)
         elif choice == 'X':
             save_settings_func()
             exit_message_func()
+            time.sleep(1)
             break
         else:
             invalid_option_message()
@@ -156,8 +172,52 @@ def exit_message():
 def invalid_option_message():
     print("Invalid option, please try again.")
 
-def clear_screen():
-    if os.name == 'nt':
-        _ = os.system('cls')
+def update_random_delay():
+    global current_delay_index_3vs, random_delay_r5y
+    current_delay_index_3vs = (current_delay_index_3vs + 1) % len(delay_options_7fu)
+    random_delay_r5y = delay_options_7fu[current_delay_index_3vs]
+    print(f"Random delay set to {random_delay_r5y} seconds (minimum 15 seconds).")
+
+def display_final_summary(low_score_3hf, high_score_6hd, total_files_downloaded_vr5, total_time_elapsed_4vd, current_score_9fr):
+    global low_score_3hf, high_score_6hd, total_files_downloaded_vr5, total_time_elapsed_4vd, current_score_9fr
+    
+    # Calculation of current score
+    if total_time_elapsed_4vd > 0:  # Prevent division by zero
+        current_score_9fr = (total_files_downloaded_vr5 / total_time_elapsed_4vd) * 100
+    
+    # Check and update high and low scores
+    first_time = False
+    if low_score_3hf == 0 and high_score_6hd == 0:
+        low_score_3hf, high_score_6hd = current_score_9fr, current_score_9fr
+        first_time = True
+    
+    new_high_score = False
+    if current_score_9fr > high_score_6hd:
+        high_score_6hd = current_score_9fr
+        new_high_score = True
+    
+    new_low_score = False
+    if current_score_9fr < low_score_3hf:
+        low_score_3hf = current_score_9fr
+        new_low_score = True
+    
+    # Saving the new high and low scores
+    save_settings()
+    
+    # Displaying the Final Summary
+    print("\n==================== Final Summary Stats ====================")
+    if first_time:
+        print(f"First Score: {current_score:.2f}")
     else:
-        _ = os.system('clear')
+        if new_high_score:
+            print(f"New High Score: {current_score:.2f}")
+        elif new_low_score:
+            print(f"New Low Score: {current_score:.2f}")
+        else:
+            print(f"Average Score: {current_score:.2f}")
+    
+    print(f"Total Files Downloaded: {total_files_downloaded_vr5}")
+    print(f"Total Time Elapsed: {total_time_elapsed_4vd} seconds")
+    print("=============================================================")
+    
+    input("Press any key to return to the menu...")
