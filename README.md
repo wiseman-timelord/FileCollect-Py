@@ -68,6 +68,7 @@ pip install requests[socks]
 pip install psutil
 pip install asyncio
 pip install aiohttp
+pip install psutil
 ```
 2. Tor Service
 ```
