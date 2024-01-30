@@ -2,11 +2,11 @@
 
 ### STATUS
 Not Working/Development. v0.07. ETA possibly 1-2 days depending upon remaining issues and bugfixing. Remaining tasks are...
-- Tor library "Tor expert bundle" code must be added for linux, to maintain multi-OS. then complete install instructions in readme.md for linux users.
-- Create "Setup-Install.Bat", clone other recent "Setup=Install.Bat", then edit. The process will be first, check for and as required create, ".\libraries" and ".\cache", folders, then install python libraries to python, then, download & unpack, tor in cache, then unpack contents of contents, then, move and rename, the Tor folder to ".\libraries\tor-expert-bundle", then delete contents of cache and subfolders.
 - testing and bugfixing, ensure am able to get to menu without crash.
 - format menu 100% correctly. 
 - check everything over.
+- Tor library "Tor expert bundle" code must be added for linux, to maintain multi-OS. then complete install instructions in readme.md for linux users.
+- Create "Setup-Install.Bat", clone other recent "Setup=Install.Bat", then edit. The process will be first, check for and as required create, ".\libraries" and ".\cache", folders, then install python libraries to python, then, download & unpack, tor in cache, then unpack contents of contents, then, move and rename, the Tor folder to ".\libraries\tor-expert-bundle", then delete contents of cache and subfolders.
 - run live tests & bugfix.
 - Finish documentation.
 
