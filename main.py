@@ -1,8 +1,8 @@
 # main.py
 
 # Imports
-import os, json, time
-from scripts import display, utility
+import os, json, time, asyncio
+from scripts import display, utility, manage
 from scripts.display import clear_screen
 
 # Global Variables
@@ -19,6 +19,7 @@ total_time_elapsed_4vd = 0
 delay_options_7fu = ['15', '30', '60', '120', '240', '480']
 current_delay_index_3vs = 0
 current_score_9fr = 0.0
+progress_lock_6hg = asyncio.Lock()
 TOR_PORT = 9050
 
 # Initialization
@@ -29,6 +30,7 @@ clear_screen()
 print("\nScript Initialized...")
 time.sleep(2)
 
+# Config Class
 class Config:
     def __init__(self):
         self.working_directory = os.path.dirname(os.path.realpath(__file__))
