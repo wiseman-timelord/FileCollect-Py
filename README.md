@@ -47,7 +47,7 @@ FilesCollect is an advanced web scraping utility designed to streamline the proc
 
 
 
-Select :- Menu Options = 1-6, Begin Scrape = B, Exit Menu = X:
+Select :- Options = 1-6, Begin = B, Exit = X:
 
 
 ```
