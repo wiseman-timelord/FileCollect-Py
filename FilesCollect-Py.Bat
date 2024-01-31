@@ -68,10 +68,8 @@ where python3 >nul 2>&1 && (
 ) || (
     python ".\main.py" 2>> "%ErrorLog%"
 )
-echo.
 timeout /t 1 /nobreak >nul
 echo Returning to menu..
-echo.
 timeout /t 2 /nobreak >nul
 goto menu
 
@@ -86,6 +84,8 @@ timeout /t 1 /nobreak >nul
 :: Check for Python script files
 if not exist ".\scripts\utility.py" set missing=1
 if not exist ".\scripts\display.py" set missing=1
+if not exist ".\scripts\manage.py" set missing=1
+if not exist ".\scripts\__init__.py" set missing=1
 if not exist ".\settings.json" set missing=1
 if not exist ".\main.py" set missing=1
 
