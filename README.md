@@ -22,33 +22,45 @@ FilesCollect is an advanced web scraping utility designed to streamline the proc
 - **Progress Indication**: Provides real-time progress bars for downloads, active and inactive, full-feature bars, for relevantly, single and threaded, downloads.
 
 ### PREVIEW
-- Early version (needs updating when its bugfixed)...
+- Main Menu is now working...
 ```
 
-    print("")
-    print("=======================( FilesCollect )=======================")
-    print("\n\n\n")
-    print("                   1. Content Page Location")
-    print(f"{formatted_url}")
-    print("")
-    print("                    2. File Extension Type")
-    print(f"                              ({file_ext_text})")
-    print("")
-    print("                    3. Network Privacy Modes")
-    print(f"                      ({privacy_mode_text})")
-    print("")
-    print("                      4. Multi-Thread Modes")
-    print(f"                      ({asynchronous_mode_4fn_text})")
-    print("") 
-    print("                      5. Random Timer Delay")
-    print(f"                          ({random_delay_r5y})")
-    print("")
-    print("                      6. Set Tor Port Number")
-    print(f"                            ({TOR_PORT})")
-    print("\n\n\n")
-    print("Select :- Menu Options = 1-6, Begin Scrape = B, Exit Menu = X: ", end='')
+=======================( FilesCollect )=======================
+
+
+
+
+                   1. Content Page Location
+                            (None)
+
+                   2. File Extension Type
+                            (None)
+
+                   3. Network Privacy Modes
+                        (Standard Mode)
+
+                    4. Multi-Thread Modes
+                          (Disabled)
+
+                    5. Random Timer Delay
+                             (15)
+
+                    6. Set Tor Port Number
+                            (9050)
+
+
+
+
+Select :- Menu Options = 1-6, Begin Scrape = B, Exit Menu = X:
+
 
 ```
+- Doing its thing...
+```
+Not Yet...
+```
+
+
 
 ## USAGE
 1. Run `Setup-Install.Bat`, and then, check the libraries all installs correctly and run again as required.
