@@ -4,7 +4,7 @@ from urllib.parse import urljoin
 from .tor_utility import is_tor_running, start_tor_service
 
 # Unified download function
-async def download_file(session, url, directory, config, semaphore, progress_callback, async_mode=True, start_time=None):
+async def download_file(session, url, directory, config, semaphore, progress_callback, start_time=None):
     local_filename, path = url.split('/')[-1], os.path.join(directory, url.split('/')[-1])
     try:
         if async_mode:
@@ -72,9 +72,9 @@ async def scrape_and_download(config):
         if not directory:
             print("Check URL and Dir rights.")
             return
-        if config.asynchronous_mode_4fn:
+        if config.max_concurrent_downloads_6d3 > 1:
             async with aiohttp.ClientSession() as session:
-                setup_session_proxies(session, not config.standard_mode_3nc, config.TOR_PORT, config.working_directory_vem)
+                setup_session_proxies(session, not config.standard_mode_3nc,     config.TOR_PORT, config.working_directory_vem)
                 await handle_async_downloads(session, config, full_path)
         else:
             with requests.Session() as session:
@@ -105,27 +105,36 @@ def handle_sync_downloads(session, config, full_path):
         print(format_error_message(e))
 
 async def handle_async_downloads(session, config, full_path):
-    download_semaphore = asyncio.Semaphore(2)
+    download_semaphore = asyncio.Semaphore(config.max_concurrent_downloads_6d3)
     try:
         async with session.get(config.base_url_location_eia) as response:
             response.raise_for_status()
             text = await response.text()
         soup = BeautifulSoup(text, 'html.parser')
-        tasks = [
-            asyncio.create_task(
-                handle_download(
-                    session,
-                    urljoin(config.base_url_location_eia, href['href']),
-                    full_path,
-                    download_semaphore,
-                    update_progress_with_lock,
-                    await get_random_delay(config.random_delay_r5y)
+        tasks = []
+        for href in soup.find_all('a', href=True):
+            if should_download(href['href'], config.file_type_search_fvb):
+                url = urljoin(config.base_url_location_eia, href['href'])
+                delay = get_random_delay(config.random_delay_r5y)
+                task = asyncio.create_task(
+                    download_with_delay(
+                        session,
+                        url,
+                        full_path,
+                        download_semaphore,
+                        update_progress_with_lock,
+                        delay
+                    )
                 )
-            ) for href in soup.find_all('a', href=True) if should_download(href['href'], config.file_type_search_fvb)
-        ]
+                tasks.append(task)
         await asyncio.gather(*tasks)
     except Exception as e:
         print(format_error_message(e))
+
+
+async def download_with_delay(session, url, directory, semaphore, progress_callback, delay):
+    await asyncio.sleep(delay)
+    await download_file(session, url, directory, config, semaphore, progress_callback)
 
 def setup_download_directory(base_url_location_eia, working_directory_vem):
     directory = create_dir_from_url(base_url_location_eia)

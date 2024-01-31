@@ -23,7 +23,7 @@ class Config:
         self.base_url_location = ''
         self.file_type_search = []
         self.standard_mode = True
-        self.asynchronous_mode = False
+        self.max_concurrent_downloads_6d3 = 1
         self.random_delay = "15"
         self.low_score = float('inf')
         self.high_score = 0.0

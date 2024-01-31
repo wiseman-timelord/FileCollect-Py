@@ -81,7 +81,7 @@ def display_menu(config):
     mode_text = "Standard Mode" if config.standard_mode else "Tor/Onion Mode"
     file_ext_text = ", ".join(config.file_type_search_fvb) if config.file_type_search_fvb else "None"
     privacy_mode_text = mode_text
-    asynchronous_mode_text = "Enabled" if config.asynchronous_mode else "Disabled"
+    max_concurrent_downloads_text = str(config.max_concurrent_downloads_6d3)
     display_url = config.base_url_location_eia[-62:] if len(config.base_url_location_eia) > 62 else config.base_url_location_eia
     url_display_text = f"({display_url if display_url else 'None'})"
     total_length = 62
@@ -103,7 +103,7 @@ def display_menu(config):
     print(f"                        ({privacy_mode_text})")
     print("")
     print("                    4. Multi-Thread Modes")
-    print(f"                          ({asynchronous_mode_text})")
+    print(f"                              ({max_concurrent_downloads_text})")
     print("") 
     print("                    5. Random Timer Delay")
     print(f"                             ({config.random_delay_r5y})")
@@ -126,7 +126,9 @@ def handle_menu(config, save_settings_func, scrape_and_download_func):
         elif choice == '3':
             config.standard_mode = not config.standard_mode
         elif choice == '4':
-            config.asynchronous_mode = not config.asynchronous_mode
+            config.max_concurrent_downloads_6d3 = ((config.max_concurrent_downloads_6d3) % 4) + 1
+            print(f"...Multi-thread mode set to {config.max_concurrent_downloads_6d3} threads.")
+            time.sleep(1)
         elif choice == '5':
             update_random_delay(config)
         elif choice == '6':

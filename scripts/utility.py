@@ -31,8 +31,8 @@ def load_settings(config):
             config.base_url_location_eia = settings.get("base_url_location_eia", "")
             config.file_type_search_fvb = settings.get("file_type_search_fvb", [])
             config.standard_mode_3nc = settings.get("standard_mode_3nc", True)
-            config.asynchronous_mode_4fn = settings.get("asynchronous_mode_4fn", False)
-            config.random_delay_r5y = settings.get("random_delay_r5y", "Off")
+            config.max_concurrent_downloads_6d3 = settings.get("max_concurrent_downloads_6d3", 1)
+            config.random_delay_r5y = settings.get("random_delay_r5y", "15")
             config.low_score_3hf = settings.get("low_score_3hf", float('inf'))
             config.high_score_6hd = settings.get("high_score_6hd", 0.0)
             config.TOR_PORT = settings.get("TOR_PORT", 9050)
@@ -46,7 +46,7 @@ def save_settings(config):
         "base_url_location_eia": config.base_url_location_eia,
         "file_type_search_fvb": config.file_type_search_fvb,
         "standard_mode_3nc": config.standard_mode_3nc,
-        "asynchronous_mode_4fn": config.asynchronous_mode_4fn,
+        "max_concurrent_downloads_6d3": config.max_concurrent_downloads_6d3,
         "random_delay_r5y": config.random_delay_r5y,
         "low_score_3hf": config.low_score_3hf,
         "high_score_6hd": config.high_score_6hd,
