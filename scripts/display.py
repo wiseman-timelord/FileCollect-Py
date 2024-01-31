@@ -3,12 +3,18 @@
 # Imports
 import os, time, json, sys, requests, aiohttp, psutil
 
-
+# clear screen
 def clear_screen():
     if os.name == 'nt':
         _ = os.system('cls')
     else:
         _ = os.system('clear')
+
+# initialization complete
+def script_initialization():
+    clear_screen()
+    print("\nScript Initialized...")
+    time.sleep(2)
 
 # Tor Errors
 error_msgs = {
@@ -142,14 +148,10 @@ def handle_menu(config, save_settings_func, scrape_and_download_func):
             time.sleep(1)
             print("..Begin Scrape..")
             time.sleep(2)
-            begin_rip_message_func(config.base_url_location_eia)  # Updated to use config attribute
+            begin_rip_message_func(config.base_url_location_eia)
             time.sleep(1)
             scrape_and_download_func(
-                config.base_url_location_eia,
-                config.file_type_search_fvb,  # Updated to use config attribute
-                not config.standard_mode_3nc,  # Updated to use config attribute
-                config.asynchronous_mode_4fn,  # Updated to use config attribute
-                config.TOR_PORT  # Updated to use config attribute
+                config
             )
             print("..Scrape Finished.")
             time.sleep(2)
@@ -160,6 +162,7 @@ def handle_menu(config, save_settings_func, scrape_and_download_func):
             break
         else:
             invalid_option_message()
+
 
 def get_page_location():
     print("Enter the page URL: ", end='')
@@ -184,22 +187,22 @@ def update_random_delay(config):
     print(f"...Random delay set to {config.random_delay_r5y} seconds.")
     time.sleep(1)
 
-def display_final_summary(low_score_3hf, high_score_6hd, total_files_downloaded_vr5, total_time_elapsed_4vd, current_score_9fr):
-    if total_time_elapsed_4vd > 0:
-        current_score_9fr = (total_files_downloaded_vr5 / total_time_elapsed_4vd) * 100
+def display_final_summary(config):
+    if config.total_time_elapsed_4vd > 0:
+        config.current_score_9fr = (config.total_files_downloaded_vr5 / config.total_time_elapsed_4vd) * 100
     first_time = False
-    if low_score_3hf == 0 and high_score_6hd == 0:
-        low_score_3hf, high_score_6hd = current_score_9fr, current_score_9fr
+    if config.low_score_3hf == 0 and config.high_score_6hd == 0:
+        config.low_score_3hf, config.high_score_6hd = config.current_score_9fr, config.current_score_9fr
         first_time = True
     new_high_score = False
-    if current_score_9fr > high_score_6hd:
-        high_score_6hd = current_score_9fr
+    if config.current_score_9fr > config.high_score_6hd:
+        config.high_score_6hd = config.current_score_9fr
         new_high_score = True
     new_low_score = False
-    if current_score_9fr < low_score_3hf:
-        low_score_3hf = current_score_9fr
+    if config.current_score_9fr < config.low_score_3hf:
+        config.low_score_3hf = config.current_score_9fr
         new_low_score = True
-    save_settings()
+    save_settings(config)
     print("\n==================== Final Summary Stats ====================")
     if first_time:
         print(f"First Score: {current_score:.2f}")

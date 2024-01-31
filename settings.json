@@ -3,8 +3,8 @@
     "file_type_search_fvb": [],
     "standard_mode_3nc": true,
     "asynchronous_mode_4fn": false,
-    "low_score_3hf": "0",
-    "high_score_6hd": "0",
     "random_delay_r5y": "15",
-    "TOR_PORT": ""
+    "low_score_3hf": Infinity,
+    "high_score_6hd": 0.0,
+    "TOR_PORT": 9050
 }

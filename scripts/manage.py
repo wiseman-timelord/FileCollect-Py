@@ -66,27 +66,48 @@ def handle_tor(working_directory_vem, port):
 
 
 
-async def scrape_and_download(base_url_location_eia, file_types, use_tor, asynchronous_mode_4fn, working_directory_vem, TOR_PORT, progress_callback, random_delay_r5y):
+async def scrape_and_download(config):
     try:
-        directory, full_path = setup_download_directory(base_url_location_eia, working_directory_vem)
+        directory, full_path = setup_download_directory(config.base_url_location_eia, config.working_directory_vem)
         if not directory:
-            print("Check, URL and Dir permissions.")
+            print("Check URL and Dir rights.")
             return
-        if asynchronous_mode_4fn:
+        if config.asynchronous_mode_4fn:
             async with aiohttp.ClientSession() as session:
-                setup_session_proxies(session, use_tor, TOR_PORT, working_directory_vem)
-                await handle_async_downloads(session, base_url_location_eia, file_types, full_path, progress_callback, random_delay_r5y)
+                setup_session_proxies(session, not config.standard_mode_3nc, config.TOR_PORT, config.working_directory_vem)
+                await handle_async_downloads(session, config, full_path)
         else:
             with requests.Session() as session:
-                setup_session_proxies(session, use_tor, TOR_PORT, working_directory_vem)
-                handle_sync_downloads(session, base_url_location_eia, file_types, full_path, progress_callback, random_delay_r5y)
+                setup_session_proxies(session, not config.standard_mode_3nc, config.TOR_PORT, config.working_directory_vem)
+                handle_sync_downloads(session, config, full_path)
     except Exception as e:
         print(format_error_message(e))
 
-async def handle_async_downloads(session, base_url_location_eia, file_types, full_path, progress_callback, random_delay_r5y):
+
+
+
+
+async def update_progress_with_lock(filename, downloaded, total, start_time):
+    async with progress_lock_6hg:
+        update_progress(filename, downloaded, total, start_time)
+
+def handle_sync_downloads(session, config, full_path):
+    try:
+        response = session.get(config.base_url_location_eia)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, 'html.parser')
+        for link in soup.find_all('a', href=True):
+            href = link['href']
+            if should_download(href, config.file_type_search_fvb):
+                time.sleep(get_random_delay(config.random_delay_r5y))  # Apply random delay before starting each download
+                download_file_sync(session, urljoin(config.base_url_location_eia, href), full_path, update_progress)
+    except Exception as e:
+        print(format_error_message(e))
+
+async def handle_async_downloads(session, config, full_path):
     download_semaphore = asyncio.Semaphore(2)
     try:
-        async with session.get(base_url_location_eia) as response:
+        async with session.get(config.base_url_location_eia) as response:
             response.raise_for_status()
             text = await response.text()
         soup = BeautifulSoup(text, 'html.parser')
@@ -94,35 +115,17 @@ async def handle_async_downloads(session, base_url_location_eia, file_types, ful
             asyncio.create_task(
                 handle_download(
                     session,
-                    urljoin(base_url_location_eia, href['href']),
+                    urljoin(config.base_url_location_eia, href['href']),
                     full_path,
                     download_semaphore,
                     update_progress_with_lock,
-                    await get_random_delay(random_delay_r5y)
+                    await get_random_delay(config.random_delay_r5y)
                 )
-            ) for href in soup.find_all('a', href=True) if should_download(href['href'], file_types)
+            ) for href in soup.find_all('a', href=True) if should_download(href['href'], config.file_type_search_fvb)
         ]
         await asyncio.gather(*tasks)
     except Exception as e:
         print(format_error_message(e))
-
-async def update_progress_with_lock(filename, downloaded, total, start_time):
-    async with progress_lock_6hg:
-        update_progress(filename, downloaded, total, start_time)
-
-def handle_sync_downloads(session, base_url_location_eia, file_types, full_path, progress_callback, random_delay_r5y):
-    try:
-        response = session.get(base_url_location_eia)
-        response.raise_for_status()
-        soup = BeautifulSoup(response.text, 'html.parser')
-        for link in soup.find_all('a', href=True):
-            href = link['href']
-            if should_download(href, file_types):
-                time.sleep(get_random_delay(random_delay_r5y))  # Apply random delay before starting each download
-                download_file_sync(session, urljoin(base_url_location_eia, href), full_path, progress_callback)
-    except Exception as e:
-        print(format_error_message(e))
-
 
 def setup_download_directory(base_url_location_eia, working_directory_vem):
     directory = create_dir_from_url(base_url_location_eia)

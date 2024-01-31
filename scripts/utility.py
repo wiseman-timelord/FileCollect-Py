@@ -33,32 +33,30 @@ def load_settings(config):
             config.standard_mode_3nc = settings.get("standard_mode_3nc", True)
             config.asynchronous_mode_4fn = settings.get("asynchronous_mode_4fn", False)
             config.random_delay_r5y = settings.get("random_delay_r5y", "Off")
-            config.low_score_3hf = settings.get("low_score_3hf", 0.0)
+            config.low_score_3hf = settings.get("low_score_3hf", float('inf'))
             config.high_score_6hd = settings.get("high_score_6hd", 0.0)
-    except (FileNotFoundError, json.JSONDecodeError):
-        print("Settings Corrupted! Using Default.")
-        config.base_url_location_eia = ""
-        config.file_type_search_fvb = []
-        config.standard_mode_3nc = True
-        config.asynchronous_mode_4fn = False
-        config.random_delay_r5y = "Off"
-        config.low_score_3hf = 0
-        config.high_score_6hd = 0
+            config.TOR_PORT = settings.get("TOR_PORT", 9050)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error loading settings: {e}")
+        print("Corrupted or Not Found! Using Default.")
 
 # Save Settings
 def save_settings(config):
     settings = {
-        "base_url_location_eia": config.base_url_location,
-        "file_type_search_fvb": config.file_type_search,
-        "standard_mode_3nc": config.standard_mode,
-        "asynchronous_mode_4fn": config.asynchronous_mode,
-        "random_delay_r5y": config.random_delay,
-        "low_score_3hf": config.low_score,
-        "high_score_6hd": config.high_score,
-        "TOR_PORT": config.tor_port
+        "base_url_location_eia": config.base_url_location_eia,
+        "file_type_search_fvb": config.file_type_search_fvb,
+        "standard_mode_3nc": config.standard_mode_3nc,
+        "asynchronous_mode_4fn": config.asynchronous_mode_4fn,
+        "random_delay_r5y": config.random_delay_r5y,
+        "low_score_3hf": config.low_score_3hf,
+        "high_score_6hd": config.high_score_6hd,
+        "TOR_PORT": config.TOR_PORT
     }
-    with open('settings.json', 'w') as f:
-        json.dump(settings, f, indent=4)
+    try:
+        with open('settings.json', 'w') as f:
+            json.dump(settings, f, indent=4)
+    except Exception as e:
+        print(f"Error saving settings: {e}")
 
 def get_random_delay(random_delay_r5y):
     base_delay = 15
