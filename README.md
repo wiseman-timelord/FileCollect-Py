@@ -1,9 +1,9 @@
 # FilesCollect-Py
 
 ### STATUS
-Not Working/Development. v0.08. ETA possibly 1 days depending upon remaining issues and bugfixing. Remaining tasks are...
-- testing and bugfixing, ensure main menu works.
-- format menu 100% correctly. 
+Not Working/Development. v0.08. Main Menu is there:
+- Main menu loads, and all options are toggleable, resulting in Save of Class to Json upon selecting, "Begin" and "Exit", selecting options for settings saves to the class, and loading Json into Class upon start.
+- Other functions are there or 99% there, probably need references checking and fixing, with a few bugs aside possible due to accellerated production. 
 - check everything over.
 - Tor library "Tor expert bundle" code must be added for linux, to maintain multi-OS. then complete install instructions in readme.md for linux users.
 - Create "Setup-Install.Bat", clone other recent "Setup=Install.Bat", then edit. The process will be first, check for and as required create, ".\libraries" and ".\cache", folders, then install python libraries to python, then, download & unpack, tor in cache, then unpack contents of contents, then, move and rename, the Tor folder to ".\libraries\tor-expert-bundle", then delete contents of cache and subfolders.
