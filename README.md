@@ -92,7 +92,7 @@ run FilesCollect-Py.Bat
 ### NOTATION
 - After exploring numerous works by a creator, you opt to scrape a selection, and you notice FilesCollect-Py conveniently saves the url folder names in as the folder name for the downloads, simplifying future donations. Recognizing the value of the creator's efforts, you plan to contribute financially once you, benefit from their work or have the means.
 - This one cannot be done in PowerShell apparemtly, I tried to make it in the first session with powershell and built-in windows 10 vpn functions, but it became impossible. The [torpy](https://pypi.org/project/torpy/) library makes it possible in Python to interact with [Tor](https://2019.www.torproject.org/about/overview.html), thanks for their contributions.
-- An ethical consideration; delays were hardcoded into the program in optimal locations, and also for the purposes of, to "enable processes to complete in reliable method" and to reduce server load, additionally async downloads are limited to 4, all this adding to a more reliable method of download. 
+- Delays were hardcoded into the program in optimal locations, and also for the purposes of, to "enable processes to complete in reliable method" and to reduce server load, additionally async downloads are limited to 4, all this adding to a more, ethical and reliable, method of download. 
 
 
 ## DEVELOPMENT
