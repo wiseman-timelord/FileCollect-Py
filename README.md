@@ -5,6 +5,7 @@ Not Working/Development. v0.08. Main Menu is there:
 - Main menu loads, and all options are toggleable, resulting in Save of Class to Json upon selecting, "Begin" and "Exit", selecting options for settings saves to the class, and loading Json into Class upon start.
 - Tor Code and Standard Functionality, 99% there with regards to, production of content & Implementation, probably need references checking and fixing, with a few bugs aside possible due to accellerated production. 
 - check everything over.
+- Expand Async mode to 4, on a menu toggle of, 1, 2, 3, 4.
 - Tor library "Tor expert bundle" code must be added for linux, to maintain multi-OS. then complete install instructions in readme.md for linux users.
 - Create "Setup-Install.Bat", clone other recent "Setup=Install.Bat", then edit. The process will be first, check for and as required create, ".\libraries" and ".\cache", folders, then install python libraries to python, then, download & unpack, tor in cache, then unpack contents of contents, then, move and rename, the Tor folder to ".\libraries\tor-expert-bundle", then delete contents of cache and subfolders.
 - run live tests & bugfix.
@@ -96,7 +97,7 @@ run FilesCollect-Py.Bat
 ### NOTATION
 - After exploring numerous works by a creator, you opt to scrape a selection, and you notice FilesCollect-Py conveniently saves the author's and project's names in the folder name, simplifying future donations. Recognizing the value of the creator's efforts, you plan to contribute financially once you, benefit from their work or have the means.
 - This one cannot be done in PowerShell apparemtly, I tried to make it in the first session with powershell and built-in windows 10 vpn functions, but it became impossible. The [torpy](https://pypi.org/project/torpy/) library makes it possible in Python to interact with [Tor](https://2019.www.torproject.org/about/overview.html), thanks for their contributions.
-- An ethical consideration; delays were hardcoded into the program in optimal locations, to "somewhat discourage use for cyber-theft" and also to "enable processes to complete in reliable method", additionally async downloads are limited to 2; FilesCollect-Py is intended to make tasks easier, not specifically shorten the time doing the task. 
+- An ethical consideration; delays were hardcoded into the program in optimal locations, to "somewhat discourage use for cyber-theft" and also to "enable processes to complete in reliable method", additionally async downloads are limited too; FilesCollect-Py is intended to, make tasks easier and produce a reliable method of download. 
 
 
 ## DISCLAIMER
