@@ -83,6 +83,7 @@ def display_menu(config):
     right_padding = total_length - left_padding - len(url_display_text)
     formatted_url = f"{' ' * left_padding}{url_display_text}{' ' * right_padding}"
 
+    clear_screen()
     print("")
     print("=======================( FilesCollect )=======================")
     print("\n\n\n")
@@ -104,7 +105,7 @@ def display_menu(config):
     print("                    6. Set Tor Port Number")
     print(f"                            ({config.tor_port})")
     print("\n\n\n")
-    print("Select :- Menu Options = 1-6, Begin Scrape = B, Exit Menu = X: ", end='')
+    print("Select:- Options = 1-6, Begin = B, Exit = X: ", end='')
 
 def handle_menu(config, save_settings_func, scrape_and_download_func):
     while True:
@@ -121,7 +122,7 @@ def handle_menu(config, save_settings_func, scrape_and_download_func):
         elif choice == '4':
             asynchronous_mode_4fn = not asynchronous_mode_4fn
         elif choice == '5':
-            update_random_delay()
+            update_random_delay(config)
         elif choice == '6':
             print("Enter Port Number: ", end='')
             new_port = input()
@@ -171,11 +172,11 @@ def exit_message():
 def invalid_option_message():
     print("Invalid option, please try again.")
 
-def update_random_delay():
-    global current_delay_index_3vs, random_delay_r5y
-    current_delay_index_3vs = (current_delay_index_3vs + 1) % len(delay_options_7fu)
-    random_delay_r5y = delay_options_7fu[current_delay_index_3vs]
-    print(f"Random delay set to {random_delay_r5y} seconds (minimum 15 seconds).")
+def update_random_delay(config):
+    config.current_delay_index_3vs = (config.current_delay_index_3vs + 1) % len(config.delay_options_7fu)
+    config.random_delay_r5y = config.delay_options_7fu[config.current_delay_index_3vs]
+    print(f"...Random delay set to {config.random_delay_r5y} seconds.")
+    time.sleep(1)
 
 def display_final_summary(low_score_3hf, high_score_6hd, total_files_downloaded_vr5, total_time_elapsed_4vd, current_score_9fr):
     if total_time_elapsed_4vd > 0:
