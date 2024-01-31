@@ -1,7 +1,10 @@
 # manage.py
 
+from urllib.parse import urljoin
+from .tor_utility import is_tor_running, start_tor_service
+
 # Unified download function
-async def download_file(session, url, config, semaphore, progress_callback, async_mode=True, start_time=None):
+async def download_file(session, url, directory, config, semaphore, progress_callback, async_mode=True, start_time=None):
     local_filename, path = url.split('/')[-1], os.path.join(directory, url.split('/')[-1])
     try:
         if async_mode:
@@ -19,6 +22,7 @@ async def download_file(session, url, config, semaphore, progress_callback, asyn
         time.sleep(2)
 
 async def handle_response(response, path, progress_callback, local_filename, start_time=None):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     response.raise_for_status()
     total_size = int(response.headers.get('content-length', 0))
     downloaded = 0
@@ -54,6 +58,8 @@ def handle_tor(working_directory_vem, port):
                 print("Failed to start Tor.")
         except OSError as e:
             print(f"Tor startup failed: {str(e)}")
+            print("Please ensure the Tor executable is correctly installed and the path is specified.")
+        
     else:
         print("Tor is already running.")
     time.sleep(2)
@@ -64,6 +70,7 @@ async def scrape_and_download(base_url_location_eia, file_types, use_tor, asynch
     try:
         directory, full_path = setup_download_directory(base_url_location_eia, working_directory_vem)
         if not directory:
+            print("Check, URL and Dir permissions.")
             return
         if asynchronous_mode_4fn:
             async with aiohttp.ClientSession() as session:

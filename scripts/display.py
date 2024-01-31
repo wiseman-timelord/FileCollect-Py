@@ -109,7 +109,7 @@ def display_menu(config):
 
 def handle_menu(config, save_settings_func, scrape_and_download_func):
     while True:
-        display_menu(config) 
+        display_menu(config)
         choice = input().strip().upper()
         if choice == '1':
             config.base_url_location_eia = get_page_location()
@@ -119,7 +119,6 @@ def handle_menu(config, save_settings_func, scrape_and_download_func):
                 config.file_type_search_fvb.append(file_extension)
         elif choice == '3':
             config.standard_mode = not config.standard_mode
-
         elif choice == '4':
             config.asynchronous_mode = not config.asynchronous_mode
         elif choice == '5':
@@ -134,24 +133,29 @@ def handle_menu(config, save_settings_func, scrape_and_download_func):
             else:
                 print("Invalid Port. Please enter a number between 1024 and 65535.")
                 time.sleep(2)
-
         elif choice == 'B':
             clear_screen()
             print("\nBeginning Processes..")
             time.sleep(2)
-            save_settings_func(config)
+            save_settings_func(config)  # Save settings before beginning the scrape
             print("..Saving Settings..")
             time.sleep(1)
             print("..Begin Scrape..")
             time.sleep(2)
-            begin_rip_message_func(base_url_location_eia)
+            begin_rip_message_func(config.base_url_location_eia)  # Updated to use config attribute
             time.sleep(1)
-            scrape_and_download_func(base_url_location_eia, file_type_search_fvb, not standard_mode_3nc, asynchronous_mode_4fn, TOR_PORT)
+            scrape_and_download_func(
+                config.base_url_location_eia,
+                config.file_type_search_fvb,  # Updated to use config attribute
+                not config.standard_mode_3nc,  # Updated to use config attribute
+                config.asynchronous_mode_4fn,  # Updated to use config attribute
+                config.TOR_PORT  # Updated to use config attribute
+            )
             print("..Scrape Finished.")
             time.sleep(2)
         elif choice == 'X':
-            save_settings_func(config)()
-            exit_message_func()
+            save_settings_func(config)
+            exit_message()
             time.sleep(1)
             break
         else:

@@ -1,7 +1,7 @@
 # utility.py
 
 # Imports
-import os, asyncio, aiohttp, requests, psutil, subprocess, time, random, json
+import os, asyncio, aiohttp, requests, psutil, subprocess, time, random, json, random
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 from torpy.http.adapter import TorHttpAdapter
@@ -10,6 +10,7 @@ from scripts.display import display_progress_bar, error_msgs
 
 
 
+# Handle Errors
 def handle_error(e):
     return error_msgs.get(type(e), "Error Occurred")
 
@@ -19,8 +20,7 @@ def create_dir_from_url(url):
         path = urlparse(url).path.lstrip('/').rsplit('.', 1)[0]
         return os.path.join(*path.split('/'))
     except Exception as e:
-        print("URL Parse Error")
-        time.sleep(2)
+        print(f"Error parsing URL: {e}")
         return None
 
 # Load Settings
@@ -45,18 +45,17 @@ def load_settings(config):
         config.low_score_3hf = 0
         config.high_score_6hd = 0
 
-
-
 # Save Settings
 def save_settings(config):
     settings = {
-        "base_url_location_eia": config.base_url_location_eia,
-        "file_type_search_fvb": config.file_type_search_fvb,
-        "standard_mode_3nc": config.standard_mode_3nc,
-        "asynchronous_mode_4fn": config.asynchronous_mode_4fn,
-        "random_delay_r5y": config.random_delay_r5y,
-        "low_score_3hf": config.low_score_3hf,
-        "high_score_6hd": config.high_score_6hd
+        "base_url_location_eia": config.base_url_location,
+        "file_type_search_fvb": config.file_type_search,
+        "standard_mode_3nc": config.standard_mode,
+        "asynchronous_mode_4fn": config.asynchronous_mode,
+        "random_delay_r5y": config.random_delay,
+        "low_score_3hf": config.low_score,
+        "high_score_6hd": config.high_score,
+        "TOR_PORT": config.tor_port
     }
     with open('settings.json', 'w') as f:
         json.dump(settings, f, indent=4)
