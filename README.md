@@ -18,7 +18,7 @@ FilesCollect is an advanced web scraping utility designed to streamline the proc
 - **Progress Indication**: Provides real-time progress bars for downloads, active and inactive, full-feature bars, for relevantly, single and threaded, downloads.
 
 ### PREVIEW
-- Main Menu is now working...
+- Main Menu and its options...
 ```
 
 =======================( FilesCollect )=======================
