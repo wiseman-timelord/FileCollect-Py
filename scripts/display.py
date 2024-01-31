@@ -112,32 +112,34 @@ def handle_menu(config, save_settings_func, scrape_and_download_func):
         display_menu(config) 
         choice = input().strip().upper()
         if choice == '1':
-            base_url_location_eia = get_page_location()
+            config.base_url_location_eia = get_page_location()
         elif choice == '2':
             file_extension = get_file_extension()
-            if file_extension and file_extension not in file_type_search_fvb:
-                file_type_search_fvb.append(file_extension)
+            if file_extension and file_extension not in config.file_type_search_fvb:
+                config.file_type_search_fvb.append(file_extension)
         elif choice == '3':
-            standard_mode_3nc = not standard_mode_3nc
+            config.standard_mode = not config.standard_mode
+
         elif choice == '4':
-            asynchronous_mode_4fn = not asynchronous_mode_4fn
+            config.asynchronous_mode = not config.asynchronous_mode
         elif choice == '5':
             update_random_delay(config)
         elif choice == '6':
             print("Enter Port Number: ", end='')
-            new_port = input()
+            new_port = input().strip()
             time.sleep(1)
             if new_port.isdigit() and 1024 <= int(new_port) <= 65535:
-                TOR_PORT = int(new_port)
-                print(f"Tor port number set to {TOR_PORT}")
+                config.tor_port = int(new_port)
+                print(f"...Tor port number set to {config.tor_port}")
             else:
                 print("Invalid Port. Please enter a number between 1024 and 65535.")
                 time.sleep(2)
+
         elif choice == 'B':
             clear_screen()
             print("\nBeginning Processes..")
             time.sleep(2)
-            save_settings_func()
+            save_settings_func(config)
             print("..Saving Settings..")
             time.sleep(1)
             print("..Begin Scrape..")
@@ -148,7 +150,7 @@ def handle_menu(config, save_settings_func, scrape_and_download_func):
             print("..Scrape Finished.")
             time.sleep(2)
         elif choice == 'X':
-            save_settings_func()
+            save_settings_func(config)()
             exit_message_func()
             time.sleep(1)
             break
