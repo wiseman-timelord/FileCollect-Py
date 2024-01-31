@@ -73,12 +73,12 @@ def display_inactive_progress_bar(filename, total):
 
 def display_menu(config):
     mode_text = "Standard Mode" if config.standard_mode else "Tor/Onion Mode"
-    file_ext_text = ", ".join(config.file_type_search) if config.file_type_search else "None"
+    file_ext_text = ", ".join(config.file_type_search_fvb) if config.file_type_search_fvb else "None"
     privacy_mode_text = mode_text
     asynchronous_mode_text = "Enabled" if config.asynchronous_mode else "Disabled"
-    display_url = config.base_url_location[-62:] if len(config.base_url_location) > 62 else config.base_url_location
+    display_url = config.base_url_location_eia[-62:] if len(config.base_url_location_eia) > 62 else config.base_url_location_eia
     url_display_text = f"({display_url if display_url else 'None'})"
-    total_length = 64
+    total_length = 62
     left_padding = (total_length - len(url_display_text)) // 2
     right_padding = total_length - left_padding - len(url_display_text)
     formatted_url = f"{' ' * left_padding}{url_display_text}{' ' * right_padding}"
@@ -89,20 +89,20 @@ def display_menu(config):
     print("                   1. Content Page Location")
     print(f"{formatted_url}")
     print("")
-    print("                    2. File Extension Type")
-    print(f"                              ({file_ext_text})")
+    print("                   2. File Extension Type")
+    print(f"                            ({file_ext_text})")
     print("")
-    print("                    3. Network Privacy Modes")
-    print(f"                      ({privacy_mode_text})")
+    print("                   3. Network Privacy Modes")
+    print(f"                        ({privacy_mode_text})")
     print("")
-    print("                      4. Multi-Thread Modes")
-    print(f"                      ({asynchronous_mode_4fn_text})")
+    print("                    4. Multi-Thread Modes")
+    print(f"                          ({asynchronous_mode_text})")
     print("") 
-    print("                      5. Random Timer Delay")
-    print(f"                          ({random_delay_r5y})")
+    print("                    5. Random Timer Delay")
+    print(f"                             ({config.random_delay_r5y})")
     print("")
-    print("                      6. Set Tor Port Number")
-    print(f"                            ({TOR_PORT})")
+    print("                    6. Set Tor Port Number")
+    print(f"                            ({config.tor_port})")
     print("\n\n\n")
     print("Select :- Menu Options = 1-6, Begin Scrape = B, Exit Menu = X: ", end='')
 
