@@ -69,14 +69,7 @@ Not Yet...
 Install is not easy, this will be written further later..
 1. Python stuff...
 ```
-pip install requests
-pip install beautifulsoup4
-pip install torpy
-pip install requests[socks]
-pip install psutil
-pip install asyncio
-pip install aiohttp
-pip install psutil
+pip install requests, beautifulsoup4, torpy, stem, requests[socks], psutil, asyncio, aiohttp, psutil
 ```
 2. Tor Service
 ```
