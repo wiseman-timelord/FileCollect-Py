@@ -1,14 +1,8 @@
 # FilesCollect-Py
 
 ### STATUS
-Not Working/Development. v0.08. Main Menu is there:
-- loading Json into Class upon start, Main menu loads, and all options are correct, restored from previous use. 
-- selecting options on the menu saves to the class, and the class is SaveD to Json upon selecting, "Begin" and "Exit"
-- Tor Code and Standard Functionality, 99% there with regards to, production of content & Implementation.
-<br> Work remaining:
-- check other sections.
+Development - Alpha, work remianing...
 - Expand Async mode to 4, on a menu toggle of, 1, 2, 3, 4.
-- Tor library "Tor expert bundle" code must be added for linux, to maintain multi-OS. then complete install instructions in readme.md for linux users.
 - Create "Setup-Install.Bat", clone other recent "Setup=Install.Bat", then edit. The process will be first, check for and as required create, ".\libraries" and ".\cache", folders, then install python libraries to python, then, download & unpack, tor in cache, then unpack contents of contents, then, move and rename, the Tor folder to ".\libraries\tor-expert-bundle", then delete contents of cache and subfolders.
 - run live tests & bugfix.
 - Finish documentation.
@@ -101,6 +95,9 @@ run FilesCollect-Py.Bat
 - This one cannot be done in PowerShell apparemtly, I tried to make it in the first session with powershell and built-in windows 10 vpn functions, but it became impossible. The [torpy](https://pypi.org/project/torpy/) library makes it possible in Python to interact with [Tor](https://2019.www.torproject.org/about/overview.html), thanks for their contributions.
 - An ethical consideration; delays were hardcoded into the program in optimal locations, to "somewhat discourage use for cyber-theft" and also to "enable processes to complete in reliable method", additionally async downloads are limited too; FilesCollect-Py is intended to, make tasks easier and produce a reliable method of download. 
 
+
+## DEVELOPMENT
+- investigate linux versions of expert tor bundle, differences in installation, and how the functions will require differing filenames/modules, etc.
 
 ## DISCLAIMER
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
