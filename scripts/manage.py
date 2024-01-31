@@ -1,7 +1,11 @@
 # manage.py
 
+# Imports
+import stem, shutil, os, time, requests, aiohttp, asyncio, subprocess, random
+from stem import Signal
+from stem.control import Controller
 from urllib.parse import urljoin
-from .tor_utility import is_tor_running, start_tor_service
+from bs4 import BeautifulSoup
 
 # Unified download function
 async def download_file(session, url, directory, config, semaphore, progress_callback, start_time=None):
@@ -44,28 +48,46 @@ async def handle_response(response, path, progress_callback, local_filename, sta
 
 # Tor handling and IP checking
 def handle_tor(working_directory_vem, port):
-    original_ip, tor_executable = get_current_ip(), 'tor.exe' if os.name == 'nt' else 'tor'
+    original_ip = get_current_ip()
+    tor_executable = 'tor.exe' if os.name == 'nt' else 'tor'
     tor_path = os.path.join(working_directory_vem, 'libraries', 'tor-expert-bundle', 'tor', tor_executable)
+
+    if not shutil.which(tor_executable):
+        print("Tor executable not found. Please ensure Tor is correctly installed.")
+        return
+
     if not is_tor_ready(port):
         try:
-            subprocess.Popen(tor_path)
+            subprocess.Popen([tor_path])  # Ensure the correct list format for subprocess.Popen
             print("Starting Tor...")
-            time.sleep(10)  # Wait for Tor to initialize
+            wait_for_tor(port)  # New function to wait for Tor to be ready
             if is_tor_ready(port):
                 print("Tor Active")
+                if check_tor_ip(port):
+                    print("Traffic is routing through Tor.")
+                else:
+                    print("Traffic is not routing through Tor.")
                 check_ip_change(original_ip)
             else:
                 print("Failed to start Tor.")
         except OSError as e:
             print(f"Tor startup failed: {str(e)}")
             print("Please ensure the Tor executable is correctly installed and the path is specified.")
-        
     else:
         print("Tor is already running.")
     time.sleep(2)
 
+# wait tor
+def wait_for_tor(port):
+    with Controller.from_port(port=port) as controller:
+        controller.authenticate()
+        while True:
+            status = controller.get_info("status/bootstrap-phase")
+            if "PROGRESS=100" in status:
+                break
+            time.sleep(1)
 
-
+# scrape downloads
 async def scrape_and_download(config):
     try:
         directory, full_path = setup_download_directory(config.base_url_location_eia, config.working_directory_vem)
@@ -83,14 +105,12 @@ async def scrape_and_download(config):
     except Exception as e:
         print(format_error_message(e))
 
-
-
-
-
+# update progress indicator
 async def update_progress_with_lock(filename, downloaded, total, start_time):
     async with progress_lock_6hg:
         update_progress(filename, downloaded, total, start_time)
 
+# sync downloads
 def handle_sync_downloads(session, config, full_path):
     try:
         response = session.get(config.base_url_location_eia)
@@ -104,6 +124,7 @@ def handle_sync_downloads(session, config, full_path):
     except Exception as e:
         print(format_error_message(e))
 
+# async downloads
 async def handle_async_downloads(session, config, full_path):
     download_semaphore = asyncio.Semaphore(config.max_concurrent_downloads_6d3)
     try:
@@ -131,11 +152,12 @@ async def handle_async_downloads(session, config, full_path):
     except Exception as e:
         print(format_error_message(e))
 
-
+# delay download
 async def download_with_delay(session, url, directory, semaphore, progress_callback, delay):
     await asyncio.sleep(delay)
     await download_file(session, url, directory, config, semaphore, progress_callback)
 
+# folder naming
 def setup_download_directory(base_url_location_eia, working_directory_vem):
     directory = create_dir_from_url(base_url_location_eia)
     if directory is None:
@@ -145,15 +167,18 @@ def setup_download_directory(base_url_location_eia, working_directory_vem):
         os.makedirs(full_path)
     return directory, full_path
 
+# setup proxies
 def setup_session_proxies(session, use_tor, TOR_PORT, working_directory_vem):
     if use_tor:
         if not is_tor_running(TOR_PORT):
             start_tor_service(working_directory_vem, TOR_PORT)
         session.proxies = {'http': f'socks5h://localhost:{TOR_PORT}', 'https': f'socks5h://localhost:{TOR_PORT}'}
 
+# should download??
 def should_download(href, file_types):
     return any(href.endswith(file_type) for file_type in file_types)
 
+# download syncronbization
 def download_file_sync(session, url, directory, progress_callback, start_time=None):
     local_filename = url.split('/')[-1]
     path = os.path.join(directory, local_filename)
@@ -173,6 +198,7 @@ def download_file_sync(session, url, directory, progress_callback, start_time=No
         print("Sync Download Error")
         time.sleep(2)
 
+# get ip
 def get_current_ip():
     try:
         response = requests.get('https://api.ipify.org')
@@ -183,11 +209,14 @@ def get_current_ip():
         time.sleep(2)
     return None
 
-def check_ip_change(original_ip):
-    new_ip = get_current_ip()
-    if new_ip and new_ip != original_ip:
-        print("IP Hidden")
-        time.sleep(2)
-    else:
-        print("IP Unchanged")
-        time.sleep(2)
+# check ip
+def check_tor_ip(port):
+    try:
+        session = requests.session()
+        session.proxies = {'http': f'socks5h://localhost:{port}', 'https': f'socks5h://localhost:{port}'}
+        response = session.get('https://check.torproject.org/api/ip')
+        if response.status_code == 200 and 'true' in response.text:
+            return True
+    except Exception as e:
+        print(f"Error checking Tor IP: {str(e)}")
+    return False
