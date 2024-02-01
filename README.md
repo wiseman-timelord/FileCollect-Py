@@ -2,7 +2,7 @@
 
 ### STATUS
 Development - Alpha, work remianing...
-- Delayed due to Fallout 4 mod collection [Mature Wasteland Operator](https://next.nexusmods.com/fallout4/collections/uqdfpz), now has video too.
+- test Setup-Install.Bat
 - test all functions without commit to download.
 - run live tests & bugfix.
 - Finish documentation.
