@@ -91,6 +91,7 @@ run FilesCollect-Py.Bat
 
 ## DEVELOPMENT
 - investigate linux versions of expert tor bundle, differences in installation, and how the functions will require differing filenames/modules, etc.
+- implement compatibility for both, powershell and powershellcore, in 'Setup-Install.Bat'.
 
 ## DISCLAIMER
 This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
