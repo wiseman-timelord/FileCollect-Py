@@ -2,8 +2,8 @@
 
 ### STATUS
 Development - Alpha, work remianing...
-- Delayed due to Fallout 4 mod collection [Mature Wasteland Operator](https://next.nexusmods.com/fallout4/collections/uqdfpz)
-- Create "Setup-Install.Bat", clone other recent "Setup=Install.Bat", then edit. The process will be first check the imports at the top of all the scripts and create requirements.txt. Batch should check for and as required create, ".\libraries" and ".\cache", folders, then install python libraries from requirements.txt, then, download & unpack, tor in cache, then unpack contents of contents, then, move and rename, the Tor folder to ".\libraries\tor-expert-bundle", then delete contents of cache and subfolders. 
+- Delayed due to Fallout 4 mod collection [Mature Wasteland Operator](https://next.nexusmods.com/fallout4/collections/uqdfpz), now has video too.
+- test all functions without commit to download.
 - run live tests & bugfix.
 - Finish documentation.
 
