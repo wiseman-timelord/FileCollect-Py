@@ -1,0 +1,7 @@
+requests
+beautifulsoup4
+torpy
+stem
+requests[socks]
+aiohttp
+lxml 
