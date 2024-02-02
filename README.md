@@ -2,7 +2,7 @@
 
 ### STATUS
 Development - Alpha, work remianing...
-- test all functions without commit to download.
+- test all menu idems, ensure they work in a satisfactory method (mostly done).
 - run live tests & bugfix.
 - Finish documentation.
 
