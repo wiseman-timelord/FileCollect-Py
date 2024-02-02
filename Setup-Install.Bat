@@ -2,7 +2,7 @@
 
 :: Initialization
 mode con cols=80 lines=35
-color 0E
+color 80
 title FilesCollect Setup-Install
 cd /d "%~dp0"
 echo.
