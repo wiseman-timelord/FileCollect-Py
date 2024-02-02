@@ -56,31 +56,18 @@ Select :- Options = 1-6, Begin = B, Exit = X:
 Not Yet...
 ```
 
-
-
 ## USAGE
-1. Run `Setup-Install.Bat`, and then, check the libraries all installs correctly and run again as required.
-2. Run `FilesCollect-Py.Bat`, and then configure using options 1-3.
+1. Run "Setup-Install.Bat", this will create, ".\libraries" and ".\cache", folders, and then install, the libraries in `requirements.txt` to Python and the "Tor Expert Bundle" to ".\libraries".
+2. Run `FilesCollect-Py.Bat`, and configure operations using options 1-6.
 3. Press `b` to begin, then watch as the scripts, optionally connect to tor and download the specified files from the specified location.
 4. Examine summary screen, determine if all the files were correctly downloaded.
 5. Check the `.\Downloads` folder for your files, and then move them to your intended location.    
 
 ### REQUIREMENTS
-Install is not easy, this will be written further later..
-1. Python stuff...
-```
-pip install requests, beautifulsoup4, torpy, stem, requests[socks], psutil, asyncio, aiohttp, psutil
-```
-2. Tor Service
-```
-Download the Tor Expert Bundle: https://www.torproject.org/download/tor/
-Extract the Bundle, Run the Tor Service
-```
-3. Run the program...
-```
-run FilesCollect-Py.Bat
-```
-
+- Python =>3.7
+- Windows Batch Environment.
+- Python libraries detailed in `requirements.txt` (installed by Setup-Install.Bat).
+- Tor Expert Bundle (installed by Setup-Install.Bat).
 
 ### NOTATION
 - After exploring numerous works by a creator, you opt to scrape a selection, and you notice FilesCollect-Py conveniently saves the url folder names in as the folder name for the downloads, simplifying future donations. Recognizing the value of the creator's efforts, you plan to contribute financially once you, benefit from their work or have the means.
