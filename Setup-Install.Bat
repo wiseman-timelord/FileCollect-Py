@@ -1,13 +1,13 @@
-REM Script: Setup-Install.Bat for FilesCollect
 @echo off
 
 :: Initialization
-mode con cols=64 lines=30
+mode con cols=80 lines=35
 color 0E
 title FilesCollect Setup-Install
 cd /d "%~dp0"
 echo.
 echo Setup-Install Started...
+echo.
 echo.
 timeout /t 2 /nobreak >nul
 setlocal
@@ -36,33 +36,28 @@ echo ..Requirements Installed.
 echo.
 timeout /t 1 >nul
 
-:: Download Tor Expert Bundle with retries
-set "DOWNLOAD_SUCCESS=0"
+:: Download Tor Expert Bundle with curl and retry
+echo Downloading Tor-Expert-Bundle..
 set "RETRY_COUNT=0"
 set "MAX_RETRIES=10"
 
 :DownloadBundle
 if %RETRY_COUNT% lss %MAX_RETRIES% (
-    echo Download Attempt: %RETRY_COUNT%/%MAX_RETRIES%)
-    powershell -Command "Invoke-WebRequest -Uri '%TOR_BUNDLE_URL%' -OutFile '%CACHE_DIR%\%TOR_TAR_GZ_FILE%' -TimeoutSec 60" && (
-        echo ..Tor-Expert-Bundle Downloaded.
-		echo.
-        set "DOWNLOAD_SUCCESS=1"
-        goto Proceed
-    ) || (
+    echo Download Attempt: %RETRY_COUNT%/%MAX_RETRIES%
+    curl -L "%TOR_BUNDLE_URL%" --output "%CACHE_DIR%\%TOR_TAR_GZ_FILE%" -C - --progress-bar || (
         echo Error: Download Failed!
         echo.
-        set /a RETRY_COUNT=RETRY_COUNT+1
+        set /a RETRY_COUNT+=1
         timeout /t 5 >nul
         goto DownloadBundle
     )
 ) else (
     echo Error: Max Retries!
-	echo.
+    echo.
     goto Cleanup
 )
 
-:Proceed
+echo ..Tor-Expert-Bundle Downloaded.
 echo.
 timeout /t 1 >nul
 
@@ -78,15 +73,28 @@ echo ..Tor-Expert-Bundle(gz) Extracted.
 echo.
 timeout /t 1 >nul
 
-:: Extract Tor Expert Bundle (tar)
-echo Extracting Tor-Expert-Bundle(tar)..
-powershell -Command "tar -xf '%CACHE_DIR%\%TOR_TAR_FILE%' -C '%CACHE_DIR%'" || (
-    echo Error: Failed Extraction.
-    echo.
-    timeout /t 2 >nul
-    goto Cleanup
+:: Ensure Tor Expert Bundle folder in Libraries Directory
+if not exist "%LIBRARIES_DIR%\%TOR_BUNDLE_FOLDER%\" mkdir "%LIBRARIES_DIR%\%TOR_BUNDLE_FOLDER%"
+
+:: Move Tor and Data folders to the Tor Expert Bundle in Libraries Directory
+echo Moving Tor and Data folders to Tor-Expert-Bundle..
+if exist "%CACHE_DIR%\tor\" (
+    xcopy "%CACHE_DIR%\tor" "%LIBRARIES_DIR%\%TOR_BUNDLE_FOLDER%\tor\" /E /I /H || (
+        echo Error: Move Failed.
+        echo.
+        timeout /t 2 >nul
+        goto Cleanup
+    )
 )
-echo ..Tor-Expert-Bundle(tar) Extracted.
+if exist "%CACHE_DIR%\data\" (
+    xcopy "%CACHE_DIR%\data" "%LIBRARIES_DIR%\%TOR_BUNDLE_FOLDER%\data\" /E /I /H || (
+        echo Error: Move Failed.
+        echo.
+        timeout /t 2 >nul
+        goto Cleanup
+    )
+)
+echo ..Tor and Data folders moved to Tor-Expert-Bundle.
 echo.
 timeout /t 1 >nul
 
@@ -110,6 +118,9 @@ echo ..Cleanup Completed.
 echo.
 timeout /t 1 >nul
 
+:: End Of File
+echo.
 echo ...Setup-Install Finished.
+echo.
 endlocal
 pause
