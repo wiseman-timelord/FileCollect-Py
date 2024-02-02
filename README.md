@@ -70,7 +70,7 @@ Not Yet...
 - Tor Expert Bundle (installed by Setup-Install.Bat).
 
 ## NOTATION
-- After exploring numerous works by a creator, you opt to scrape a selection, and you notice FilesCollect-Py conveniently saves the url folder names in as the folder name for the downloads, simplifying future donations. Recognizing the value of the creator's efforts, you plan to contribute financially once you, benefit from their work or have the means.
+- After exploring numerous works by a creator, you opt to scrape a selection, and you notice FilesCollect conveniently saves the url folder names in as the folder name for the downloads, simplifying future donations. Recognizing the value of the creator's efforts, you plan to contribute financially once you, benefit from their work or have the means.
 - This one cannot be done in PowerShell apparemtly, I tried to make it in the first session with powershell and built-in windows 10 vpn functions, but it became impossible. The [torpy](https://pypi.org/project/torpy/) library makes it possible in Python to interact with [Tor](https://2019.www.torproject.org/about/overview.html), thanks for their contributions.
 
 ### DEVELOPMENT
