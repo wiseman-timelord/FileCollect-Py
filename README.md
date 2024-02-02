@@ -1,7 +1,7 @@
 # FilesCollect-Py
 
 ### STATUS
-Development - Alpha, delayed due to [New WebSite]("http://wisetime.rf.gd/index.html)", work remianing...
+Development - Alpha, delayed due to [New WebSite](http://wisetime.rf.gd/index.html), work remianing...
 - test all menu idems, ensure they work in a satisfactory method (mostly done).
 - run live tests & bugfix.
 - Finish documentation.
