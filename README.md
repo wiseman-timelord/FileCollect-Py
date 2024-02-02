@@ -1,4 +1,4 @@
-# FilesCollect-Py
+# FilesCollect
 
 ### STATUS
 Development - Alpha, delayed due to [New WebSite](http://wisetime.rf.gd/index.html), work remaining...
@@ -58,7 +58,7 @@ Not Yet...
 
 ## USAGE
 1. Run `Setup-Install.Bat`, this will create, `.\libraries` and `.\cache`, folders, and then install, the libraries in `requirements.txt` to Python and the "Tor Expert Bundle" to `.\libraries`.
-2. Run `FilesCollect-Py.Bat`, and configure operations using options 1-6.
+2. Run `FilesCollect.Bat`, and configure operations using options 1-6.
 3. Press `b` to begin, then watch as the scripts, optionally connect to tor and download the specified files from the specified location.
 4. Examine summary screen, determine if all the files were correctly downloaded.
 5. Check the `.\Downloads` folder for your files, and then move them to your intended location.    
