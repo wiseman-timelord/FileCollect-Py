@@ -2,7 +2,6 @@
 
 ### STATUS
 Development - Alpha, work remianing...
-- test Setup-Install.Bat when internet is faster.
 - test all functions without commit to download.
 - run live tests & bugfix.
 - Finish documentation.
