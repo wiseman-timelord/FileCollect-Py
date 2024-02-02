@@ -57,7 +57,7 @@ Not Yet...
 ```
 
 ## USAGE
-1. Run "Setup-Install.Bat", this will create, ".\libraries" and ".\cache", folders, and then install, the libraries in `requirements.txt` to Python and the "Tor Expert Bundle" to ".\libraries".
+1. Run `Setup-Install.Bat`, this will create, `.\libraries` and `.\cache`, folders, and then install, the libraries in `requirements.txt` to Python and the "Tor Expert Bundle" to `.\libraries`.
 2. Run `FilesCollect-Py.Bat`, and configure operations using options 1-6.
 3. Press `b` to begin, then watch as the scripts, optionally connect to tor and download the specified files from the specified location.
 4. Examine summary screen, determine if all the files were correctly downloaded.
