@@ -79,15 +79,20 @@ def display_inactive_progress_bar(filename, total):
 
 def display_menu(config):
     mode_text = "Standard Mode" if config.standard_mode else "Tor/Onion Mode"
+    privacy_mode_text = format_center(f"({mode_text})")
+
     file_ext_text = ", ".join(config.file_type_search_fvb) if config.file_type_search_fvb else "None"
-    privacy_mode_text = mode_text
-    max_concurrent_downloads_text = str(config.max_concurrent_downloads_6d3)
+    formatted_ext = format_center(f"({file_ext_text})")
+
     display_url = config.base_url_location_eia[-62:] if len(config.base_url_location_eia) > 62 else config.base_url_location_eia
-    url_display_text = f"({display_url if display_url else 'None'})"
-    total_length = 62
-    left_padding = (total_length - len(url_display_text)) // 2
-    right_padding = total_length - left_padding - len(url_display_text)
-    formatted_url = f"{' ' * left_padding}{url_display_text}{' ' * right_padding}"
+    formatted_url = format_center(f"({display_url if display_url else 'None'})")
+
+    max_concurrent_downloads_text = str(config.max_concurrent_downloads_6d3)
+    formatted_max_concurrent_downloads = format_center(f"({max_concurrent_downloads_text})")
+
+    formatted_random_delay = format_center(f"({config.random_delay_r5y})")
+
+    formatted_tor_port = format_center(f"({config.tor_port})")
 
     clear_screen()
     print("")
@@ -97,21 +102,28 @@ def display_menu(config):
     print(f"{formatted_url}")
     print("")
     print("                   2. File Extension Type")
-    print(f"                            ({file_ext_text})")
+    print(f"{formatted_ext}")
     print("")
     print("                   3. Network Privacy Modes")
-    print(f"                        ({privacy_mode_text})")
+    print(f"{privacy_mode_text}")
     print("")
     print("                    4. Multi-Thread Modes")
-    print(f"                              ({max_concurrent_downloads_text})")
+    print(f"{formatted_max_concurrent_downloads}")
     print("") 
     print("                    5. Random Timer Delay")
-    print(f"                             ({config.random_delay_r5y})")
+    print(f"{formatted_random_delay}")
     print("")
     print("                    6. Set Tor Port Number")
-    print(f"                            ({config.tor_port})")
+    print(f"{formatted_tor_port}")
     print("\n\n\n")
-    print("Select:- Options = 1-6, Begin = B, Exit = X: ", end='')
+    print("Select:- Options = 1-6, Extensions = E, Begin = B, Exit = X: ", end='')
+
+
+def format_center(text, total_length=62):
+    padding_left = (total_length - len(text)) // 2
+    padding_right = total_length - padding_left - len(text)
+    return f"{' ' * padding_left}{text}{' ' * padding_right}"
+
 
 def handle_menu(config, save_settings_func, scrape_and_download_func):
     while True:
@@ -120,9 +132,14 @@ def handle_menu(config, save_settings_func, scrape_and_download_func):
         if choice == '1':
             config.base_url_location_eia = get_page_location()
         elif choice == '2':
-            file_extension = get_file_extension()
+            file_extension = get_file_extension(config.file_type_search_fvb)
             if file_extension and file_extension not in config.file_type_search_fvb:
                 config.file_type_search_fvb.append(file_extension)
+        elif choice == 'E':
+            # Clear the list of file extensions
+            config.file_type_search_fvb.clear()
+            print("File extensions cleared.")
+            time.sleep(1)
         elif choice == '3':
             config.standard_mode = not config.standard_mode
         elif choice == '4':
@@ -152,9 +169,7 @@ def handle_menu(config, save_settings_func, scrape_and_download_func):
             time.sleep(2)
             begin_rip_message_func(config.base_url_location_eia)
             time.sleep(1)
-            scrape_and_download_func(
-                config
-            )
+            scrape_and_download_func(config)
             print("..Scrape Finished.")
             time.sleep(2)
         elif choice == 'X':
@@ -166,13 +181,24 @@ def handle_menu(config, save_settings_func, scrape_and_download_func):
             invalid_option_message()
 
 
+
 def get_page_location():
     print("Enter the page URL: ", end='')
     return input()
 
-def get_file_extension():
-    print("Enter file extension (e.g. .pdf, .jpg): ", end='')
-    return input()
+def get_file_extension(current_extensions):
+    while True:
+        print("Enter File Extension, eg, 'pdf': ", end='')
+        extension = input().strip()
+        if not extension or not extension.isalnum() or not (2 <= len(extension) <= 3):
+            print("Error: 2-3 Letters/Numbers.")
+            continue
+        if not extension.startswith('.'):
+            extension = '.' + extension
+        if extension in current_extensions:
+            print("Error: Repeated Extension!")
+            continue
+        return extension
 
 def begin_rip_message(base_url_location_eia):
     print(f"Starting to scrape and download files from {base_url_location_eia}")
